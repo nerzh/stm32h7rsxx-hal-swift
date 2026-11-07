@@ -23,7 +23,8 @@ var targets: [Target] = [
     .target(name: "CICacheReference", path: "Tests/CICacheReference", publicHeadersPath: "include"),
     .target(name: "CRAMECCReference", path: "Tests/CRAMECCReference", publicHeadersPath: "include"),
     .target(name: "CUARTReference", path: "Tests/CUARTReference", publicHeadersPath: "include"),
-    .testTarget(name: "STM32H7RSHALTests", dependencies: ["STM32H7RSHAL", "CGPIOReference", "CTimeReference", "CRCCReference", "CRCCControlReference", "CRCCExtendedReference", "CRNGReference", "CWatchdogReference", "CDMAReference", "CICacheReference", "CUARTReference"]),
+    .target(name: "CDTSReference", path: "Tests/CDTSReference", publicHeadersPath: "include"),
+    .testTarget(name: "STM32H7RSHALTests", dependencies: ["STM32H7RSHAL", "CGPIOReference", "CTimeReference", "CRCCReference", "CRCCControlReference", "CRCCExtendedReference", "CRNGReference", "CWatchdogReference", "CDMAReference", "CICacheReference", "CUARTReference", "CDTSReference"]),
 ]
 var dependencies: [Package.Dependency] = []
 if let device {

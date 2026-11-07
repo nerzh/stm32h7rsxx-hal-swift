@@ -4,7 +4,8 @@ The Swift translations whose SPDX expressions include BSD-3-Clause
 and the C reference code in Tests/CGPIOReference, Tests/CTimeReference,
 Tests/CRCCReference, Tests/CRCCControlReference, Tests/CRCCExtendedReference,
 Tests/CRNGReference, Tests/CWatchdogReference, Tests/CDMAReference,
-Tests/CICacheReference, Tests/CRAMECCReference, and Tests/CUARTReference
+Tests/CICacheReference, Tests/CRAMECCReference, Tests/CUARTReference,
+and Tests/CDTSReference
 derive from STMicroelectronics/stm32h7rsxx-hal-driver, revision
 606ed7132ef1bc32c77fd9a040103bc98f23c748.
 
