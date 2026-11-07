@@ -7,7 +7,7 @@ Tests/CRNGReference, Tests/CWatchdogReference, Tests/CDMAReference,
 Tests/CICacheReference, Tests/CRAMECCReference, Tests/CUARTReference,
 Tests/CDTSReference, Tests/CFLASHReference, Tests/CCORDICReference,
 Tests/CSystemReference, Tests/CHASHReference, Tests/CGraphicsReference,
-and Tests/CGFXTIMReference
+Tests/CGFXTIMReference, and Tests/CDMA2DReference
 derive from STMicroelectronics/stm32h7rsxx-hal-driver, revision
 606ed7132ef1bc32c77fd9a040103bc98f23c748.
 
