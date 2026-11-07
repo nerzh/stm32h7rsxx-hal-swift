@@ -1,6 +1,7 @@
 /* Copyright (c) 2009-2025 Arm Limited. All rights reserved.
  * SPDX-License-Identifier: Apache-2.0
- * Instruction wrappers adapted from CMSIS_6 cmsis_gcc.h at
+ * Instruction wrappers adapted from CMSIS_6 cmsis_gcc.h and
+ * m-profile/cmsis_gcc_m.h at
  * 3c860f7a5810a34205bdbadb84b6d5f78f1cb322.
  * See LICENSES/NOTICE.txt and LICENSES/ARM-CMSIS-Apache-2.0.txt.
  */
@@ -41,6 +42,15 @@ static inline void hal_cortex_nop(void) {
 #if defined(__arm__) || defined(__thumb__)
     __asm__ volatile("nop");
 #else
+    __builtin_trap();
+#endif
+}
+
+static inline void hal_cortex_set_primask(uint32_t value) {
+#if defined(__arm__) || defined(__thumb__)
+    __asm__ volatile("msr primask, %0" :: "r"(value) : "memory");
+#else
+    (void)value;
     __builtin_trap();
 #endif
 }
