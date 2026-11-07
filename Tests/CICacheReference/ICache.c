@@ -1,0 +1,5 @@
+#include "Upstream/ICacheReferenceShim.h"
+#include "Upstream/ICacheMacros.h"
+#include "Upstream/ICacheNamespace.h"
+#include "Upstream/ICachePrototypes.inc"
+#include "Upstream/ICacheFunctions.inc"
