@@ -123,6 +123,12 @@ private final class DMAOracleIO: DMARegisterIO, DMAHandleIO, DMACallbackIO, DMAM
         switch operation {
         case CDMA_Initialize: result = dma.initialize(configuration(), getTick: getTick)
         case CDMA_Deinitialize: result = dma.deinitialize(getTick: getTick)
+        case CDMA_InitializeLinkedList:
+            let value = storage.handle.InitLinkedList
+            result = dma.initializeLinkedList(.init(priority: value.Priority, linkStepMode: value.LinkStepMode,
+                linkAllocatedPort: value.LinkAllocatedPort, transferEventMode: value.TransferEventMode,
+                linkedListMode: value.LinkedListMode), getTick: getTick)
+        case CDMA_DeinitializeLinkedList: result = dma.deinitializeLinkedList(getTick: getTick)
         case CDMA_Start: result = dma.start(sourceAddress: a, destinationAddress: b, sourceDataSize: c)
         case CDMA_StartInterrupt: result = dma.startInterrupt(sourceAddress: a, destinationAddress: b, sourceDataSize: c)
         case CDMA_Abort: result = dma.abort(getTick: getTick)
@@ -236,7 +242,8 @@ final class DMADifferentialTests: XCTestCase {
         for controller: UInt32 in 0...1 {
             for channel: UInt32 in 0..<16 {
                 for state: UInt32 in 0...5 {
-                    for operation in [CDMA_Initialize, CDMA_Deinitialize] {
+                    for operation in [CDMA_Initialize, CDMA_Deinitialize,
+                                      CDMA_InitializeLinkedList, CDMA_DeinitializeLinkedList] {
                         check(operation, controller: controller, channel: channel, label: "state\(state)") { io in
                             self.transfer(io, state: state)
                             for register in DMARegister.allCases { io.write(register, value: 0xA5A5A5A4) }
@@ -250,6 +257,11 @@ final class DMADifferentialTests: XCTestCase {
                             io.storage.handle.Init.DestBurstLength = 64 - channel
                             io.storage.handle.Init.TransferAllocatedPort = 0x40004000
                             io.storage.handle.Init.TransferEventMode = (state & 3) << 30
+                            io.storage.handle.InitLinkedList.Priority = (state & 3) << 22
+                            io.storage.handle.InitLinkedList.LinkStepMode = (channel & 1) << 16
+                            io.storage.handle.InitLinkedList.LinkAllocatedPort = ((channel >> 1) & 1) << 17
+                            io.storage.handle.InitLinkedList.TransferEventMode = (state & 3) << 30
+                            io.storage.handle.InitLinkedList.LinkedListMode = 0x80 | (channel & 1)
                         }
                     }
                 }
@@ -279,7 +291,8 @@ final class DMADifferentialTests: XCTestCase {
     }
 
     func testDisableAndAbortTimeoutBoundaryWrapAndLateHardwareEvents() {
-        for operation in [CDMA_Initialize, CDMA_Deinitialize, CDMA_Abort, CDMA_Suspend] {
+        for operation in [CDMA_Initialize, CDMA_Deinitialize, CDMA_InitializeLinkedList,
+                          CDMA_DeinitializeLinkedList, CDMA_Abort, CDMA_Suspend] {
             for start: UInt32 in [0, UInt32.max - 3] {
                 for event: UInt32 in [0, 1, 2, 6, 7, 8] {
                     for mode: UInt32 in [0, 0x80, 0x81] {
@@ -288,7 +301,8 @@ final class DMADifferentialTests: XCTestCase {
                             io.storage.tick = start
                             io.write(.ccr, value: 1); io.write(.csr, value: 0)
                             if event != 0 {
-                                if operation == CDMA_Initialize || operation == CDMA_Deinitialize {
+                                if operation == CDMA_Initialize || operation == CDMA_Deinitialize ||
+                                    operation == CDMA_InitializeLinkedList || operation == CDMA_DeinitializeLinkedList {
                                     CDMA_ScheduleTick(&io.storage, event, CDMA_CCR, 1, 0)
                                 } else { CDMA_ScheduleTick(&io.storage, event, CDMA_CSR, 0, 0x2000) }
                             }
