@@ -1,0 +1,48 @@
+{
+  "originHash" : "ca595f4e7f3e82d37bc8812542ffa480892290677ba53b2cbb39b50c131fe350",
+  "pins" : [
+    {
+      "identity" : "swift-argument-parser",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-argument-parser.git",
+      "state" : {
+        "revision" : "6a52f3251125d74daf04fcbd5e6f08a75d074382",
+        "version" : "1.8.2"
+      }
+    },
+    {
+      "identity" : "swift-cortex-m",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/cryshado/swift-cortex-m",
+      "state" : {
+        "revision" : "a88916299fecb18c146ee563fb6412f630eababe"
+      }
+    },
+    {
+      "identity" : "swift-mmio",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-mmio",
+      "state" : {
+        "revision" : "b43b13d5acab79f099860c52e0e5dbd72bfe81e3"
+      }
+    },
+    {
+      "identity" : "swift-stm32",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/cryshado/swift-stm32",
+      "state" : {
+        "revision" : "928e0a88c23a9148749072519207cbdf25854ddf"
+      }
+    },
+    {
+      "identity" : "swift-syntax",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/swiftlang/swift-syntax.git",
+      "state" : {
+        "revision" : "79e4b74a295b6eb74a8b585e3a39d29e70c1dbd1",
+        "version" : "603.0.2"
+      }
+    }
+  ],
+  "version" : 3
+}

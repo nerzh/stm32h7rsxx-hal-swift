@@ -1,0 +1,25 @@
+STM32H7RSxx HAL Swift port
+
+The Swift translations identified by SPDX-License-Identifier: BSD-3-Clause
+and the unmodified GPIO reference files in Tests/CGPIOReference/Upstream
+derive from STMicroelectronics/stm32h7rsxx-hal-driver, revision
+606ed7132ef1bc32c77fd9a040103bc98f23c748.
+
+Copyright (c) 2022 STMicroelectronics. All rights reserved.
+Upstream package copyright: Copyright 2022(-2023) STMicroelectronics.
+
+The full license is in STM32H7RSxx-HAL-BSD-3-Clause.txt in this directory.
+Retain that copyright, all three conditions, and the disclaimer with source
+redistributions and in the materials accompanying binary redistributions.
+The existing repository LICENSE does not replace these upstream terms.
+
+The Swift translations are modifications of the upstream C implementation.
+The C reference driver and GPIO headers used by host tests are unmodified;
+their surrounding host register shim and test wrappers are new code.
+
+The register layout corrections and the host CMSIS shim use definitions from
+STMicroelectronics/cmsis-device-h7rs, revision
+7e6e213ddc397c76622a0aca2f623ccc3b34c010, Include/stm32h7s3xx.h.
+Copyright (c) 2022 STMicroelectronics. All rights reserved.
+These adaptations are identified in their source files and are licensed
+under Apache-2.0; see STM32H7RSxx-CMSIS-Apache-2.0.txt in this directory.

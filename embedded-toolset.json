@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0",
+  "swiftCompiler": {
+    "extraCLIOptions": [
+      "-enable-experimental-feature", "Embedded",
+      "-enable-experimental-feature", "Volatile",
+      "-wmo",
+      "-target-cpu", "cortex-m7",
+      "-Xfrontend", "-disable-stack-protector",
+      "-Xfrontend", "-function-sections",
+      "-Xcc", "-mcpu=cortex-m7",
+      "-Xcc", "-mfpu=fpv5-d16",
+      "-Xcc", "-mfloat-abi=softfp"
+    ]
+  },
+  "cCompiler": {
+    "extraCLIOptions": [
+      "-mcpu=cortex-m7", "-mfpu=fpv5-d16", "-mfloat-abi=softfp",
+      "-ffreestanding", "-ffunction-sections", "-fdata-sections"
+    ]
+  }
+}

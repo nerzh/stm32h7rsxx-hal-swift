@@ -1,0 +1,47 @@
+// swift-tools-version: 6.4
+
+import PackageDescription
+
+// Select exactly one device for the hardware product, as required by swift-stm32.
+let device = Context.environment["SWIFT_STM32_DEVICES"]?.uppercased()
+if let device {
+    precondition(device == "STM32H7R" || device == "STM32H7S",
+                 "Select STM32H7R or STM32H7S using SWIFT_STM32_DEVICES.")
+}
+
+var products: [Product] = [.library(name: "STM32H7RSHAL", targets: ["STM32H7RSHAL"])]
+var targets: [Target] = [
+    .target(name: "STM32H7RSHAL"),
+    .target(name: "CGPIOReference", path: "Tests/CGPIOReference", publicHeadersPath: "include"),
+    .testTarget(name: "STM32H7RSHALTests", dependencies: ["STM32H7RSHAL", "CGPIOReference"]),
+]
+var dependencies: [Package.Dependency] = []
+if let device {
+    dependencies = [
+        .package(url: "https://github.com/cryshado/swift-stm32", revision: "928e0a88c23a9148749072519207cbdf25854ddf"),
+        .package(url: "https://github.com/cryshado/swift-cortex-m", revision: "a88916299fecb18c146ee563fb6412f630eababe"),
+        .package(url: "https://github.com/apple/swift-mmio", revision: "b43b13d5acab79f099860c52e0e5dbd72bfe81e3"),
+    ]
+    products.append(.library(name: "STM32H7RSHardware", targets: ["STM32H7RSHardware"]))
+    targets.append(.target(
+        name: "STM32H7RSHardware",
+        dependencies: ["STM32H7RSHAL",
+                       .product(name: device, package: "swift-stm32"),
+                       .product(name: "MMIO", package: "swift-mmio"),
+                       .product(name: "CortexMCore", package: "swift-cortex-m")],
+        swiftSettings: [.define(device)]
+    ))
+    targets.append(.testTarget(
+        name: "STM32H7RSHardwareTests",
+        dependencies: ["STM32H7RSHardware"],
+        swiftSettings: [.define(device)]
+    ))
+}
+
+let package = Package(
+    name: "stm32h7rsxx-hal-swift",
+    platforms: [.macOS(.v15)],
+    products: products,
+    dependencies: dependencies,
+    targets: targets
+)
