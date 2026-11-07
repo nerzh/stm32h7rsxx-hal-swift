@@ -27,7 +27,8 @@ var targets: [Target] = [
     .target(name: "CFLASHReference", path: "Tests/CFLASHReference", publicHeadersPath: "include"),
     .target(name: "CCORDICReference", path: "Tests/CCORDICReference", publicHeadersPath: "include"),
     .target(name: "CSystemReference", path: "Tests/CSystemReference", publicHeadersPath: "include"),
-    .testTarget(name: "STM32H7RSHALTests", dependencies: ["STM32H7RSHAL", "CGPIOReference", "CTimeReference", "CRCCReference", "CRCCControlReference", "CRCCExtendedReference", "CRNGReference", "CWatchdogReference", "CDMAReference", "CICacheReference", "CUARTReference", "CDTSReference", "CFLASHReference", "CCORDICReference", "CSystemReference"]),
+    .target(name: "CHASHReference", path: "Tests/CHASHReference", publicHeadersPath: "include"),
+    .testTarget(name: "STM32H7RSHALTests", dependencies: ["STM32H7RSHAL", "CGPIOReference", "CTimeReference", "CRCCReference", "CRCCControlReference", "CRCCExtendedReference", "CRNGReference", "CWatchdogReference", "CDMAReference", "CICacheReference", "CUARTReference", "CDTSReference", "CFLASHReference", "CCORDICReference", "CSystemReference", "CHASHReference"]),
 ]
 var dependencies: [Package.Dependency] = []
 if let device {
