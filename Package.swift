@@ -25,7 +25,8 @@ var targets: [Target] = [
     .target(name: "CUARTReference", path: "Tests/CUARTReference", publicHeadersPath: "include"),
     .target(name: "CDTSReference", path: "Tests/CDTSReference", publicHeadersPath: "include"),
     .target(name: "CFLASHReference", path: "Tests/CFLASHReference", publicHeadersPath: "include"),
-    .testTarget(name: "STM32H7RSHALTests", dependencies: ["STM32H7RSHAL", "CGPIOReference", "CTimeReference", "CRCCReference", "CRCCControlReference", "CRCCExtendedReference", "CRNGReference", "CWatchdogReference", "CDMAReference", "CICacheReference", "CUARTReference", "CDTSReference", "CFLASHReference"]),
+    .target(name: "CCORDICReference", path: "Tests/CCORDICReference", publicHeadersPath: "include"),
+    .testTarget(name: "STM32H7RSHALTests", dependencies: ["STM32H7RSHAL", "CGPIOReference", "CTimeReference", "CRCCReference", "CRCCControlReference", "CRCCExtendedReference", "CRNGReference", "CWatchdogReference", "CDMAReference", "CICacheReference", "CUARTReference", "CDTSReference", "CFLASHReference", "CCORDICReference"]),
 ]
 var dependencies: [Package.Dependency] = []
 if let device {
