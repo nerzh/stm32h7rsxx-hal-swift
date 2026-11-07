@@ -1,0 +1,78 @@
+/* Copyright (c) 2022 STMicroelectronics. All rights reserved.
+ * SPDX-License-Identifier: BSD-3-Clause
+ * Unchanged declarations/bodies/macros extracted from STM32H7RS HAL at
+ * 606ed7132ef1bc32c77fd9a040103bc98f23c748. Host substitutions are in the shim.
+ * See LICENSES/STM32H7RSxx-HAL-BSD-3-Clause.txt. */
+#ifndef C_RCC_CONTROL_FUNCTIONS_H
+#define C_RCC_CONTROL_FUNCTIONS_H
+#define HAL_RCC_DeInit CRCCControl_Upstream_HAL_RCC_DeInit
+#define HAL_RCC_OscConfig CRCCControl_Upstream_HAL_RCC_OscConfig
+#define HAL_RCC_ClockConfig CRCCControl_Upstream_HAL_RCC_ClockConfig
+#define HAL_RCC_MCOConfig CRCCControl_Upstream_HAL_RCC_MCOConfig
+#define HAL_RCC_EnableCSS CRCCControl_Upstream_HAL_RCC_EnableCSS
+#define HAL_RCC_DisableCSS CRCCControl_Upstream_HAL_RCC_DisableCSS
+#define HAL_RCC_GetSysClockFreq CRCCControl_Upstream_HAL_RCC_GetSysClockFreq
+#define HAL_RCC_GetHCLKFreq CRCCControl_Upstream_HAL_RCC_GetHCLKFreq
+#define HAL_RCC_GetPCLK1Freq CRCCControl_Upstream_HAL_RCC_GetPCLK1Freq
+#define HAL_RCC_GetPCLK2Freq CRCCControl_Upstream_HAL_RCC_GetPCLK2Freq
+#define HAL_RCC_GetPCLK4Freq CRCCControl_Upstream_HAL_RCC_GetPCLK4Freq
+#define HAL_RCC_GetPCLK5Freq CRCCControl_Upstream_HAL_RCC_GetPCLK5Freq
+#define HAL_RCC_GetPLL1PFreq CRCCControl_Upstream_HAL_RCC_GetPLL1PFreq
+#define HAL_RCC_GetPLL1QFreq CRCCControl_Upstream_HAL_RCC_GetPLL1QFreq
+#define HAL_RCC_GetPLL1RFreq CRCCControl_Upstream_HAL_RCC_GetPLL1RFreq
+#define HAL_RCC_GetPLL1SFreq CRCCControl_Upstream_HAL_RCC_GetPLL1SFreq
+#define HAL_RCC_GetPLL2PFreq CRCCControl_Upstream_HAL_RCC_GetPLL2PFreq
+#define HAL_RCC_GetPLL2QFreq CRCCControl_Upstream_HAL_RCC_GetPLL2QFreq
+#define HAL_RCC_GetPLL2RFreq CRCCControl_Upstream_HAL_RCC_GetPLL2RFreq
+#define HAL_RCC_GetPLL2SFreq CRCCControl_Upstream_HAL_RCC_GetPLL2SFreq
+#define HAL_RCC_GetPLL2TFreq CRCCControl_Upstream_HAL_RCC_GetPLL2TFreq
+#define HAL_RCC_GetPLL3PFreq CRCCControl_Upstream_HAL_RCC_GetPLL3PFreq
+#define HAL_RCC_GetPLL3QFreq CRCCControl_Upstream_HAL_RCC_GetPLL3QFreq
+#define HAL_RCC_GetPLL3RFreq CRCCControl_Upstream_HAL_RCC_GetPLL3RFreq
+#define HAL_RCC_GetPLL3SFreq CRCCControl_Upstream_HAL_RCC_GetPLL3SFreq
+#define HAL_RCC_GetOscConfig CRCCControl_Upstream_HAL_RCC_GetOscConfig
+#define HAL_RCC_GetClockConfig CRCCControl_Upstream_HAL_RCC_GetClockConfig
+#define HAL_RCC_NMI_IRQHandler CRCCControl_Upstream_HAL_RCC_NMI_IRQHandler
+#define HAL_RCC_GetResetSource CRCCControl_Upstream_HAL_RCC_GetResetSource
+HAL_StatusTypeDef HAL_RCC_DeInit(void);
+HAL_StatusTypeDef HAL_RCC_OscConfig(RCC_OscInitTypeDef  *RCC_OscInitStruct);
+HAL_StatusTypeDef HAL_RCC_ClockConfig(const RCC_ClkInitTypeDef  *RCC_ClkInitStruct, uint32_t FLatency);
+void HAL_RCC_MCOConfig(uint32_t RCC_MCOx, uint32_t RCC_MCOSource, uint32_t RCC_MCODiv);
+void HAL_RCC_EnableCSS(void);
+void HAL_RCC_DisableCSS(void);
+uint32_t HAL_RCC_GetSysClockFreq(void);
+uint32_t HAL_RCC_GetHCLKFreq(void);
+uint32_t HAL_RCC_GetPCLK1Freq(void);
+uint32_t HAL_RCC_GetPCLK2Freq(void);
+uint32_t HAL_RCC_GetPCLK4Freq(void);
+uint32_t HAL_RCC_GetPCLK5Freq(void);
+uint32_t HAL_RCC_GetPLL1PFreq(void);
+uint32_t HAL_RCC_GetPLL1QFreq(void);
+uint32_t HAL_RCC_GetPLL1RFreq(void);
+uint32_t HAL_RCC_GetPLL1SFreq(void);
+uint32_t HAL_RCC_GetPLL2PFreq(void);
+uint32_t HAL_RCC_GetPLL2QFreq(void);
+uint32_t HAL_RCC_GetPLL2RFreq(void);
+uint32_t HAL_RCC_GetPLL2SFreq(void);
+uint32_t HAL_RCC_GetPLL2TFreq(void);
+uint32_t HAL_RCC_GetPLL3PFreq(void);
+uint32_t HAL_RCC_GetPLL3QFreq(void);
+uint32_t HAL_RCC_GetPLL3RFreq(void);
+uint32_t HAL_RCC_GetPLL3SFreq(void);
+void HAL_RCC_GetOscConfig(RCC_OscInitTypeDef  *RCC_OscInitStruct);
+void HAL_RCC_GetClockConfig(RCC_ClkInitTypeDef  *RCC_ClkInitStruct, uint32_t *pFLatency);
+void HAL_RCC_NMI_IRQHandler(void);
+uint32_t HAL_RCC_GetResetSource(void);
+#ifdef CRCC_CONTROL_IMPLEMENTATION
+static HAL_StatusTypeDef RCC_PLL_Config(uint32_t PLLnumber, const RCC_PLLInitTypeDef *pPLLInit);
+#endif
+#ifdef CRCC_CONTROL_IMPLEMENTATION
+static uint32_t RCC_PLL1_GetVCOOutputFreq(void);
+#endif
+#ifdef CRCC_CONTROL_IMPLEMENTATION
+static uint32_t RCC_PLL2_GetVCOOutputFreq(void);
+#endif
+#ifdef CRCC_CONTROL_IMPLEMENTATION
+static uint32_t RCC_PLL3_GetVCOOutputFreq(void);
+#endif
+#endif

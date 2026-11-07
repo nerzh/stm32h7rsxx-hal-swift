@@ -9,6 +9,18 @@ import STM32H7S
 // 7e6e213ddc397c76622a0aca2f623ccc3b34c010. Only addresses are inspected;
 // these tests never access memory-mapped device storage on the host.
 final class RCCRegisterLayoutTests: XCTestCase {
+    func testControlRegistersMatchCMSISIncludingReservedGaps() {
+        let actual: [UInt] = [
+            rcc.hsicfgr.unsafeAddress, rcc.cier.unsafeAddress, rcc.cifr.unsafeAddress,
+            rcc.cicr.unsafeAddress, rcc.bdcr.unsafeAddress, rcc.csr.unsafeAddress,
+            rcc.rsr.unsafeAddress, rcc.ahb4enr.unsafeAddress, pwr.cr1.unsafeAddress,
+        ]
+        XCTAssertEqual(actual, [
+            0x5802_4404, 0x5802_4460, 0x5802_4464, 0x5802_4468, 0x5802_4470,
+            0x5802_4474, 0x5802_4530, 0x5802_4540, 0x5802_4800,
+        ])
+    }
+
     func testFrequencyQueryRegistersMatchAllFourCMSISDeviceLayouts() {
         XCTAssertEqual(rcc.unsafeAddress, 0x5802_4400)
         let registers: [(String, UInt, UInt)] = [
