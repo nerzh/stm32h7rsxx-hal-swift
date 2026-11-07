@@ -18,7 +18,8 @@ var targets: [Target] = [
     .target(name: "CRCCControlReference", path: "Tests/CRCCControlReference", publicHeadersPath: "include"),
     .target(name: "CRCCExtendedReference", path: "Tests/CRCCExtendedReference", publicHeadersPath: "include"),
     .target(name: "CRNGReference", path: "Tests/CRNGReference", publicHeadersPath: "include"),
-    .testTarget(name: "STM32H7RSHALTests", dependencies: ["STM32H7RSHAL", "CGPIOReference", "CTimeReference", "CRCCReference", "CRCCControlReference", "CRCCExtendedReference", "CRNGReference"]),
+    .target(name: "CWatchdogReference", path: "Tests/CWatchdogReference", publicHeadersPath: "include"),
+    .testTarget(name: "STM32H7RSHALTests", dependencies: ["STM32H7RSHAL", "CGPIOReference", "CTimeReference", "CRCCReference", "CRCCControlReference", "CRCCExtendedReference", "CRNGReference", "CWatchdogReference"]),
 ]
 var dependencies: [Package.Dependency] = []
 if let device {

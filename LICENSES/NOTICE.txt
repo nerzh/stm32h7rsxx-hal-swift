@@ -3,7 +3,7 @@ STM32H7RSxx HAL Swift port
 The Swift translations whose SPDX expressions include BSD-3-Clause
 and the C reference code in Tests/CGPIOReference, Tests/CTimeReference,
 Tests/CRCCReference, Tests/CRCCControlReference, Tests/CRCCExtendedReference,
-and Tests/CRNGReference
+Tests/CRNGReference, and Tests/CWatchdogReference
 derive from STMicroelectronics/stm32h7rsxx-hal-driver, revision
 606ed7132ef1bc32c77fd9a040103bc98f23c748.
 
