@@ -13,7 +13,9 @@ var products: [Product] = [.library(name: "STM32H7RSHAL", targets: ["STM32H7RSHA
 var targets: [Target] = [
     .target(name: "STM32H7RSHAL"),
     .target(name: "CGPIOReference", path: "Tests/CGPIOReference", publicHeadersPath: "include"),
-    .testTarget(name: "STM32H7RSHALTests", dependencies: ["STM32H7RSHAL", "CGPIOReference"]),
+    .target(name: "CTimeReference", path: "Tests/CTimeReference", publicHeadersPath: "include"),
+    .target(name: "CRCCReference", path: "Tests/CRCCReference", publicHeadersPath: "include"),
+    .testTarget(name: "STM32H7RSHALTests", dependencies: ["STM32H7RSHAL", "CGPIOReference", "CTimeReference", "CRCCReference"]),
 ]
 var dependencies: [Package.Dependency] = []
 if let device {
@@ -23,9 +25,10 @@ if let device {
         .package(url: "https://github.com/apple/swift-mmio", revision: "b43b13d5acab79f099860c52e0e5dbd72bfe81e3"),
     ]
     products.append(.library(name: "STM32H7RSHardware", targets: ["STM32H7RSHardware"]))
+    targets.append(.target(name: "CCortexHALSupport"))
     targets.append(.target(
         name: "STM32H7RSHardware",
-        dependencies: ["STM32H7RSHAL",
+        dependencies: ["STM32H7RSHAL", "CCortexHALSupport",
                        .product(name: device, package: "swift-stm32"),
                        .product(name: "MMIO", package: "swift-mmio"),
                        .product(name: "CortexMCore", package: "swift-cortex-m")],

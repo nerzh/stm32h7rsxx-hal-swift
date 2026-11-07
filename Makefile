@@ -14,7 +14,12 @@ export SWIFTPM_MODULECACHE_OVERRIDE := $(abspath .build/ModuleCache)
 PACKAGE_FLAGS := --build-system native \
     --cache-path .build/swiftpm-cache \
     --config-path .build/swiftpm-config \
-    --security-path .build/swiftpm-security
+    --security-path .build/swiftpm-security \
+    -Xswiftc -enable-testing
+
+# Match testability flags for shared host macro tools in build and test commands.
+# Keep this in the validation commands, not in the library's package settings.
+TEST_FLAGS := --disable-testable-imports
 
 .PHONY: build test test-register-layout
 
@@ -27,13 +32,16 @@ build:
 # The pure HAL/C differential suite does not need to build MMIO macros.
 test:
 	@mkdir -p "$(TMPDIR)" "$(CLANG_MODULE_CACHE_PATH)"
-	env -u SWIFT_STM32_DEVICES $(SWIFT) test $(PACKAGE_FLAGS) \
+	env -u SWIFT_STM32_DEVICES $(SWIFT) test $(PACKAGE_FLAGS) $(TEST_FLAGS) \
 	    --scratch-path .build/host-tests
 
 # These tests inspect addresses without accessing device memory on the host.
+# Keep a persistent native tree: SwiftPM otherwise changes shared tool inputs
+# between the native and ARM swift-version markers and rebuilds every macro.
 test-register-layout:
 	@mkdir -p "$(TMPDIR)" "$(CLANG_MODULE_CACHE_PATH)"
-	$(SWIFT) test $(PACKAGE_FLAGS) -c release \
+	$(SWIFT) test $(PACKAGE_FLAGS) $(TEST_FLAGS) -c release \
+	    --scratch-path .build/register-layout-tests \
 	    --toolset Tools/host-toolset.json \
 	    --filter RegisterLayoutTests
-	@python3 Tools/sync-plugin-build-cache.py .build
+	@python3 Tools/sync-plugin-build-cache.py .build/register-layout-tests

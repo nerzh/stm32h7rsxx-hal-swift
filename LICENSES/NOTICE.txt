@@ -1,7 +1,8 @@
 STM32H7RSxx HAL Swift port
 
-The Swift translations identified by SPDX-License-Identifier: BSD-3-Clause
-and the unmodified GPIO reference files in Tests/CGPIOReference/Upstream
+The Swift translations whose SPDX expressions include BSD-3-Clause
+and the C reference code in Tests/CGPIOReference, Tests/CTimeReference,
+and Tests/CRCCReference
 derive from STMicroelectronics/stm32h7rsxx-hal-driver, revision
 606ed7132ef1bc32c77fd9a040103bc98f23c748.
 
@@ -14,8 +15,9 @@ redistributions and in the materials accompanying binary redistributions.
 The existing repository LICENSE does not replace these upstream terms.
 
 The Swift translations are modifications of the upstream C implementation.
-The C reference driver and GPIO headers used by host tests are unmodified;
-their surrounding host register shim and test wrappers are new code.
+The C GPIO driver and headers used by host tests are unmodified. Timebase
+and RCC reference function bodies are extracted without modification;
+their surrounding host register shims and test wrappers are new code.
 
 The register layout corrections and the host CMSIS shim use definitions from
 STMicroelectronics/cmsis-device-h7rs, revision
@@ -23,3 +25,9 @@ STMicroelectronics/cmsis-device-h7rs, revision
 Copyright (c) 2022 STMicroelectronics. All rights reserved.
 These adaptations are identified in their source files and are licensed
 under Apache-2.0; see STM32H7RSxx-CMSIS-Apache-2.0.txt in this directory.
+
+Cortex-M core register operations and instruction helpers also derive from
+ARM-software/CMSIS_6, revision 3c860f7a5810a34205bdbadb84b6d5f78f1cb322.
+Copyright (c) 2009-2025 Arm Limited. All rights reserved.
+These C-to-Swift adaptations and intrinsic helpers are licensed under
+Apache-2.0; see ARM-CMSIS-Apache-2.0.txt in this directory.

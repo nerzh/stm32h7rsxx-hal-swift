@@ -3,6 +3,7 @@
 // See LICENSES/STM32H7RSxx-HAL-BSD-3-Clause.txt.
 
 import CortexMCore
+import STM32H7RSHAL
 #if STM32H7R
 import STM32H7R
 #else
@@ -11,10 +12,12 @@ import STM32H7S
 
 public enum HALNVIC {
     public static func enableIRQ(_ interrupt: Interrupt) {
-        NVIC.enable(interrupt)
+        var cortex = Cortex(registers: STM32CortexRegisters())
+        cortex.enableIRQ(Int32(interrupt.rawValue))
     }
 
     public static func disableIRQ(_ interrupt: Interrupt) {
-        NVIC.disable(interrupt)
+        var cortex = Cortex(registers: STM32CortexRegisters())
+        cortex.disableIRQ(Int32(interrupt.rawValue))
     }
 }
