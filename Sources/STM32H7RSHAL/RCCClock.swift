@@ -18,12 +18,22 @@ public struct RCCOscillatorValues: Equatable, Sendable {
     public var hsi: UInt32
     public var csi: UInt32
     public var hse: UInt32
+    public var lse: UInt32
+    public var lsi: UInt32
+    public var hsi48: UInt32
+    public var external: UInt32
 
     // Defaults from stm32h7rsxx_hal_conf_template.h. Set HSE to the board oscillator.
-    public init(hsi: UInt32 = 64_000_000, csi: UInt32 = 4_000_000, hse: UInt32 = 24_000_000) {
+    public init(hsi: UInt32 = 64_000_000, csi: UInt32 = 4_000_000, hse: UInt32 = 24_000_000,
+                lse: UInt32 = 32_768, lsi: UInt32 = 32_000, hsi48: UInt32 = 48_000_000,
+                external: UInt32 = 48_000) {
         self.hsi = hsi
         self.csi = csi
         self.hse = hse
+        self.lse = lse
+        self.lsi = lsi
+        self.hsi48 = hsi48
+        self.external = external
     }
 }
 
