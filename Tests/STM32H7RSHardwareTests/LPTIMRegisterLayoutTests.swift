@@ -11,6 +11,11 @@ extension RegisterLayoutTests {
             for (register, offset) in zip(LPTIMRegister.allCases, offsets) { XCTAssertEqual(io.address(of: register), base + offset) }
         }
     }
+    func testLPTIMWakeupMaskUsesCMSISOffsetInsteadOfIncompleteSVD() {
+        for instance in LPTIMInstance.allCases {
+            XCTAssertEqual(STM32LPTIMRegisters(instance: instance).wakeupInterruptMask.unsafeAddress, 0x58000090)
+        }
+    }
     func testLPTIMHandleWordsRemainSharedBetweenAliases() {
         let storage = UnsafeMutableBufferPointer<UInt32>.allocate(capacity: 21)
         storage.initialize(repeating: 0xA5A5_A5A5)

@@ -4,6 +4,7 @@
 // 7e6e213ddc397c76622a0aca2f623ccc3b34c010.
 // See LICENSES/STM32H7RSxx-CMSIS-Apache-2.0.txt.
 
+import MMIO
 import STM32H7RSHAL
 import _Volatile
 #if STM32H7R
@@ -72,6 +73,7 @@ public struct STM32LPTIMRegisters: LPTIMRegisterIO {
         default: VolatileMappedRegister<UInt32>(unsafeBitPattern: UInt(address(of: register))).store(value)
         }
     }
-    public func readWakeupInterruptMask() -> UInt32 { exti.imr2.read().raw.storage }
-    public func writeWakeupInterruptMask(_ value: UInt32) { exti.imr2.write { $0.raw.storage = value } }
+    var wakeupInterruptMask: Register<DeviceEXTI.IMR2> { CMSISEXTI.imr2 }
+    public func readWakeupInterruptMask() -> UInt32 { wakeupInterruptMask.read().raw.storage }
+    public func writeWakeupInterruptMask(_ value: UInt32) { wakeupInterruptMask.write { $0.raw.storage = value } }
 }
