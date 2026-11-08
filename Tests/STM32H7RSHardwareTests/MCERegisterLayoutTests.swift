@@ -3,6 +3,7 @@ import STM32H7RSHAL
 @testable import STM32H7RSHardware
 
 final class MCERegisterLayoutTests: XCTestCase {
+    #if STM32H7S
     func testAllInstanceRegionKeyAndContextAddresses() {
         for instance in MCEInstance.allCases {
             let io = STM32MCERegisters(instance: instance)
@@ -24,6 +25,7 @@ final class MCERegisterLayoutTests: XCTestCase {
             }
         }
     }
+    #endif
     func testHandleUsesThreeVolatileWordsWithGuards() {
         let storage = UnsafeMutableBufferPointer<UInt32>.allocate(capacity: 5)
         storage.initialize(repeating: 0); defer { storage.deallocate() }

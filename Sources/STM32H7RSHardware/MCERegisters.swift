@@ -1,11 +1,7 @@
 import STM32H7RSHAL
-#if STM32H7R
-import STM32H7R
-private typealias DeviceMCE = STM32H7R.MCE1
-#else
+#if STM32H7S
 import STM32H7S
 private typealias DeviceMCE = STM32H7S.MCE1
-#endif
 
 public struct STM32MCERegisters: MCERegisterIO {
     public let instance: MCEInstance
@@ -110,3 +106,4 @@ public struct STM32MCERegisters: MCERegisterIO {
         }
     }
 }
+#endif

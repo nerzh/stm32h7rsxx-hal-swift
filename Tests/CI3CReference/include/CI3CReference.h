@@ -23,4 +23,6 @@ void CI3C_Write(CI3CState *,uint32_t,uint32_t);
 uint32_t CI3C_RecordDMA(CI3CState *,uint32_t,uint32_t,uint32_t,uint32_t,uint32_t);
 uint32_t CI3C_Constant(uint32_t);
 uint32_t CI3C_Compare(CI3CState *,CI3CState *);
+uint32_t CI3C_ControllerTiming(const uint32_t *input, uint32_t *output);
+uint32_t CI3C_TargetTiming(uint32_t clock, uint8_t *output);
 #endif
