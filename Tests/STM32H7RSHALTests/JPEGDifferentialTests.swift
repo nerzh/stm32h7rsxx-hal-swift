@@ -33,6 +33,13 @@ final class JPEGPair {
     }
 }
 final class JPEGDifferentialTests: XCTestCase {
+    func testFixturePreservesZeroDMAAddressesWhenHostPointersTruncateToZero() {
+        XCTAssertEqual(CJPEG_NormalizeAddress(0, 0x1000, 0), 0)
+        XCTAssertEqual(CJPEG_NormalizeAddress(0, 0, 0x1000), 0)
+        XCTAssertEqual(CJPEG_NormalizeAddress(0x44, 0x1000, 0), 0x52003044)
+        XCTAssertEqual(CJPEG_NormalizeAddress(0x44, 0, 0x1000), 0x24001044)
+    }
+
     func testHuffmanCodeGenerationAndPartialFailureMatchC() {
         let p = JPEGPair(), d = JPEGModel(state:p.actual).driver
         for isAC in [false,true] { for scenario in 0..<512 {

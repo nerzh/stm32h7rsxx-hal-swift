@@ -3,6 +3,7 @@
 #include <stdint.h>
 #include <stddef.h>
 typedef struct CJPEGState CJPEGState;
+uint32_t CJPEG_NormalizeAddress(uint32_t address,uint32_t dataBase,uint32_t registerBase);
 size_t CJPEG_Size(void);
 void CJPEG_Reset(CJPEGState *,uint32_t);
 uint32_t CJPEG_Get(CJPEGState *,uint32_t,uint32_t);

@@ -7,12 +7,15 @@ static uint32_t configGet(CJPEGState *s,uint32_t i) {switch(i){case 0:return s->
 static void configSet(CJPEGState *s,uint32_t i,uint32_t v) {switch(i){case 0:s->config.ColorSpace=v;break;case 1:s->config.ChromaSubsampling=v;break;case 2:s->config.ImageHeight=v;break;case 3:s->config.ImageWidth=v;break;case 4:s->config.ImageQuality=v;break;default:assert(0);}}
 static uint32_t outputGet(CJPEGState *s,uint32_t i) {switch(i){case 0:return s->output.ColorSpace;case 1:return s->output.ChromaSubsampling;case 2:return s->output.ImageHeight;case 3:return s->output.ImageWidth;case 4:return s->output.ImageQuality;default:assert(0);return 0;}}
 static void outputSet(CJPEGState *s,uint32_t i,uint32_t v) {switch(i){case 0:s->output.ColorSpace=v;break;case 1:s->output.ChromaSubsampling=v;break;case 2:s->output.ImageHeight=v;break;case 3:s->output.ImageWidth=v;break;case 4:s->output.ImageQuality=v;break;default:assert(0);}}
-static uint32_t normalize(CJPEGState *s,uint32_t address) {
- uint32_t base=(uint32_t)(uintptr_t)s->data;
- if(address-base<sizeof(s->data))return 0x24001000U+(address-base);
- base=(uint32_t)(uintptr_t)&s->regs;
- if(address-base<sizeof(s->regs))return 0x52003000U+(address-base);
+uint32_t CJPEG_NormalizeAddress(uint32_t address,uint32_t dataBase,uint32_t registerBase) {
+ // Zero DMA fields stay zero even when a host pointer's low 32 bits are zero.
+ if(address==0)return 0;
+ if(address-dataBase<256)return 0x24001000U+(address-dataBase);
+ if(address-registerBase<sizeof(JPEG_TypeDef))return 0x52003000U+(address-registerBase);
  return address;
+}
+static uint32_t normalize(CJPEGState *s,uint32_t address) {
+ return CJPEG_NormalizeAddress(address,(uint32_t)(uintptr_t)s->data,(uint32_t)(uintptr_t)&s->regs);
 }
 uint8_t *CJPEG_Buffer(CJPEGState *s,uint32_t i) {assert(i<256);return s->data+i;}
 uint8_t *CJPEG_GetBuffer(CJPEGState *s,uint32_t d) {return d?s->h.pJpegOutBuffPtr:s->h.pJpegInBuffPtr;}
