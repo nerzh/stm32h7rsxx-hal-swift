@@ -28,6 +28,7 @@ var targets: [Target] = [
     .target(name: "CCORDICReference", path: "Tests/CCORDICReference", publicHeadersPath: "include"),
     .target(name: "CSystemReference", path: "Tests/CSystemReference", publicHeadersPath: "include"),
     .target(name: "CHASHReference", path: "Tests/CHASHReference", publicHeadersPath: "include"),
+    .target(name: "CSMBUSReference", path: "Tests/CSMBUSReference", publicHeadersPath: "include", cSettings: [.headerSearchPath(".")]),
     .target(name: "CSRAMReference", dependencies: ["CFMCReference"], path: "Tests/CSRAMReference", publicHeadersPath: "include", cSettings: [.headerSearchPath(".")]),
     .target(name: "CSDRAMReference", dependencies: ["CFMCReference"], path: "Tests/CSDRAMReference", publicHeadersPath: "include", cSettings: [.headerSearchPath(".")]),
     .target(name: "CNORReference", dependencies: ["CFMCReference"], path: "Tests/CNORReference", publicHeadersPath: "include", cSettings: [.headerSearchPath(".")]),
@@ -79,7 +80,7 @@ var targets: [Target] = [
             cSettings: [.headerSearchPath(".")]),
     .target(name: "CGraphicsReference", path: "Tests/CGraphicsReference", publicHeadersPath: "include",
             cSettings: [.headerSearchPath(".")]),
-    .testTarget(name: "STM32H7RSHALTests", dependencies: ["STM32H7RSHAL", "CGPIOReference", "CTimeReference", "CRCCReference", "CRCCControlReference", "CRCCExtendedReference", "CRNGReference", "CWatchdogReference", "CDMAReference", "CICacheReference", "CUARTReference", "CDTSReference", "CFLASHReference", "CCORDICReference", "CSystemReference", "CHASHReference", "CGraphicsReference", "CGFXTIMReference", "CDMA2DReference", "CLTDCReference", "CDCMIPPReference", "CLPTIMReference", "CSerialControlReference", "CPSSIReference", "CMCEReference", "CSPDIFRXReference", "CMDFReference", "CJPEGReference", "CRTCReference", "CPKAReference", "CADCReference", "CFDCANReference", "CUSARTReference", "CIRDAReference", "CSMARTCARDReference", "CCRYPReference", "CETHReference", "CUSBReference", "CI2CReference", "CAudioReference", "CI3CReference", "CSDMMCReference", "CSDReference", "CMMCReference", "CSDIOReference", "CFMCReference", "CNANDReference", "CNORReference", "CSRAMReference", "CSDRAMReference"]),
+    .testTarget(name: "STM32H7RSHALTests", dependencies: ["STM32H7RSHAL", "CGPIOReference", "CTimeReference", "CRCCReference", "CRCCControlReference", "CRCCExtendedReference", "CRNGReference", "CWatchdogReference", "CDMAReference", "CICacheReference", "CUARTReference", "CDTSReference", "CFLASHReference", "CCORDICReference", "CSystemReference", "CHASHReference", "CGraphicsReference", "CGFXTIMReference", "CDMA2DReference", "CLTDCReference", "CDCMIPPReference", "CLPTIMReference", "CSerialControlReference", "CPSSIReference", "CMCEReference", "CSPDIFRXReference", "CMDFReference", "CJPEGReference", "CRTCReference", "CPKAReference", "CADCReference", "CFDCANReference", "CUSARTReference", "CIRDAReference", "CSMARTCARDReference", "CCRYPReference", "CETHReference", "CUSBReference", "CI2CReference", "CAudioReference", "CI3CReference", "CSDMMCReference", "CSDReference", "CMMCReference", "CSDIOReference", "CFMCReference", "CNANDReference", "CNORReference", "CSRAMReference", "CSDRAMReference", "CSMBUSReference"]),
 ]
 var dependencies: [Package.Dependency] = []
 if let device {
