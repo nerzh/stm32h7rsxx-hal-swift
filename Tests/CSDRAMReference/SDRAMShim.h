@@ -1,0 +1,47 @@
+#define F_JOIN_(a,b) a##b
+#define F_JOIN(a,b) F_JOIN_(a,b)
+#define __HAL_LOCK(h) do {if((h)->Lock==HAL_LOCKED)return HAL_BUSY;(h)->Lock=HAL_LOCKED;}while(0)
+#define __HAL_UNLOCK(h) ((h)->Lock=HAL_UNLOCKED)
+#define FMC_MEMORY_READ8(a) ((uint8_t)CSDRAM_ReadMemory(CSDRAM_Active(),8,(uint32_t)(uintptr_t)(a)))
+#define FMC_MEMORY_READ16(a) ((uint16_t)CSDRAM_ReadMemory(CSDRAM_Active(),16,(uint32_t)(uintptr_t)(a)))
+#define FMC_MEMORY_READ32(a) CSDRAM_ReadMemory(CSDRAM_Active(),32,(uint32_t)(uintptr_t)(a))
+#define FMC_MEMORY_WRITE8(a,v) CSDRAM_WriteMemory(CSDRAM_Active(),8,(uint32_t)(uintptr_t)(a),(uint8_t)(v))
+#define FMC_MEMORY_WRITE16(a,v) CSDRAM_WriteMemory(CSDRAM_Active(),16,(uint32_t)(uintptr_t)(a),(uint16_t)(v))
+#define FMC_MEMORY_WRITE32(a,v) CSDRAM_WriteMemory(CSDRAM_Active(),32,(uint32_t)(uintptr_t)(a),(uint32_t)(v))
+#undef __HAL_DMA_DISABLE
+#define __HAL_DMA_DISABLE(h) CSDRAM_DisableDMA(h)
+static HAL_StatusTypeDef HAL_DMA_Start_IT(DMA_HandleTypeDef *d,uint32_t source,uint32_t dest,uint32_t size){
+CSDRAMDMA *record=(CSDRAMDMA *)d;return CSDRAM_Start(record->owner,0,source,dest,size);
+}
+static HAL_StatusTypeDef HAL_DMAEx_List_Start_IT(DMA_HandleTypeDef *d){
+CSDRAMDMA *record=(CSDRAMDMA *)d;return CSDRAM_Start(record->owner,1,d->LinkedListQueue->Head->LinkRegisters[3],d->LinkedListQueue->Head->LinkRegisters[4],d->LinkedListQueue->Head->LinkRegisters[2]);
+}
+#define HAL_SDRAM_Init F_JOIN(F_VARIANT,_HAL_SDRAM_Init)
+#define HAL_SDRAM_DeInit F_JOIN(F_VARIANT,_HAL_SDRAM_DeInit)
+#define HAL_SDRAM_IRQHandler F_JOIN(F_VARIANT,_HAL_SDRAM_IRQHandler)
+#define HAL_SDRAM_Read_8b F_JOIN(F_VARIANT,_HAL_SDRAM_Read_8b)
+#define HAL_SDRAM_Write_8b F_JOIN(F_VARIANT,_HAL_SDRAM_Write_8b)
+#define HAL_SDRAM_Read_16b F_JOIN(F_VARIANT,_HAL_SDRAM_Read_16b)
+#define HAL_SDRAM_Write_16b F_JOIN(F_VARIANT,_HAL_SDRAM_Write_16b)
+#define HAL_SDRAM_Read_32b F_JOIN(F_VARIANT,_HAL_SDRAM_Read_32b)
+#define HAL_SDRAM_Write_32b F_JOIN(F_VARIANT,_HAL_SDRAM_Write_32b)
+#define HAL_SDRAM_Read_DMA F_JOIN(F_VARIANT,_HAL_SDRAM_Read_DMA)
+#define HAL_SDRAM_Write_DMA F_JOIN(F_VARIANT,_HAL_SDRAM_Write_DMA)
+#define HAL_SDRAM_RegisterCallback F_JOIN(F_VARIANT,_HAL_SDRAM_RegisterCallback)
+#define HAL_SDRAM_UnRegisterCallback F_JOIN(F_VARIANT,_HAL_SDRAM_UnRegisterCallback)
+#define HAL_SDRAM_RegisterDmaCallback F_JOIN(F_VARIANT,_HAL_SDRAM_RegisterDmaCallback)
+#define HAL_SDRAM_WriteProtection_Enable F_JOIN(F_VARIANT,_HAL_SDRAM_WriteProtection_Enable)
+#define HAL_SDRAM_WriteProtection_Disable F_JOIN(F_VARIANT,_HAL_SDRAM_WriteProtection_Disable)
+#define HAL_SDRAM_SendCommand F_JOIN(F_VARIANT,_HAL_SDRAM_SendCommand)
+#define HAL_SDRAM_ProgramRefreshRate F_JOIN(F_VARIANT,_HAL_SDRAM_ProgramRefreshRate)
+#define HAL_SDRAM_SetAutoRefreshNumber F_JOIN(F_VARIANT,_HAL_SDRAM_SetAutoRefreshNumber)
+#define HAL_SDRAM_GetModeStatus F_JOIN(F_VARIANT,_HAL_SDRAM_GetModeStatus)
+#define HAL_SDRAM_GetState F_JOIN(F_VARIANT,_HAL_SDRAM_GetState)
+#define SDRAM_DMACplt F_JOIN(F_VARIANT,_SDRAM_DMACplt)
+#define SDRAM_DMACpltProt F_JOIN(F_VARIANT,_SDRAM_DMACpltProt)
+#define SDRAM_DMAError F_JOIN(F_VARIANT,_SDRAM_DMAError)
+#define HAL_SDRAM_MspInit ((pSDRAM_CallbackTypeDef)CSDRAM_Callback(0,1))
+#define HAL_SDRAM_MspDeInit ((pSDRAM_CallbackTypeDef)CSDRAM_Callback(1,1))
+#define HAL_SDRAM_RefreshErrorCallback ((pSDRAM_CallbackTypeDef)CSDRAM_Callback(2,1))
+#define HAL_SDRAM_DMA_XferCpltCallback ((pSDRAM_DmaCallbackTypeDef)CSDRAM_Callback(3,1))
+#define HAL_SDRAM_DMA_XferErrorCallback ((pSDRAM_DmaCallbackTypeDef)CSDRAM_Callback(4,1))

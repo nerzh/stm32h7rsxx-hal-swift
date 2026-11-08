@@ -1,0 +1,205 @@
+import CFMCReference
+import STM32H7RSHAL
+import XCTest
+
+final class FMCConstantsTests: XCTestCase {
+  func testConstantsMatchPinnedHeader() {
+    XCTAssertEqual(FMCConstants.FMC_ACCESS_MODE_A, CFMC_Constant(0), "FMC_ACCESS_MODE_A")
+    XCTAssertEqual(FMCConstants.FMC_ACCESS_MODE_B, CFMC_Constant(1), "FMC_ACCESS_MODE_B")
+    XCTAssertEqual(FMCConstants.FMC_ACCESS_MODE_C, CFMC_Constant(2), "FMC_ACCESS_MODE_C")
+    XCTAssertEqual(FMCConstants.FMC_ACCESS_MODE_D, CFMC_Constant(3), "FMC_ACCESS_MODE_D")
+    XCTAssertEqual(
+      FMCConstants.FMC_ASYNCHRONOUS_WAIT_DISABLE, CFMC_Constant(4), "FMC_ASYNCHRONOUS_WAIT_DISABLE")
+    XCTAssertEqual(
+      FMCConstants.FMC_ASYNCHRONOUS_WAIT_ENABLE, CFMC_Constant(5), "FMC_ASYNCHRONOUS_WAIT_ENABLE")
+    XCTAssertEqual(
+      FMCConstants.FMC_BURST_ACCESS_MODE_DISABLE, CFMC_Constant(6), "FMC_BURST_ACCESS_MODE_DISABLE")
+    XCTAssertEqual(
+      FMCConstants.FMC_BURST_ACCESS_MODE_ENABLE, CFMC_Constant(7), "FMC_BURST_ACCESS_MODE_ENABLE")
+    XCTAssertEqual(
+      FMCConstants.FMC_CONTINUOUS_CLOCK_SYNC_ASYNC, CFMC_Constant(8),
+      "FMC_CONTINUOUS_CLOCK_SYNC_ASYNC")
+    XCTAssertEqual(
+      FMCConstants.FMC_CONTINUOUS_CLOCK_SYNC_ONLY, CFMC_Constant(9),
+      "FMC_CONTINUOUS_CLOCK_SYNC_ONLY")
+    XCTAssertEqual(
+      FMCConstants.FMC_DATA_ADDRESS_MUX_DISABLE, CFMC_Constant(10), "FMC_DATA_ADDRESS_MUX_DISABLE")
+    XCTAssertEqual(
+      FMCConstants.FMC_DATA_ADDRESS_MUX_ENABLE, CFMC_Constant(11), "FMC_DATA_ADDRESS_MUX_ENABLE")
+    XCTAssertEqual(
+      FMCConstants.FMC_EXTENDED_MODE_DISABLE, CFMC_Constant(12), "FMC_EXTENDED_MODE_DISABLE")
+    XCTAssertEqual(
+      FMCConstants.FMC_EXTENDED_MODE_ENABLE, CFMC_Constant(13), "FMC_EXTENDED_MODE_ENABLE")
+    XCTAssertEqual(FMCConstants.FMC_FLAG_FALLING_EDGE, CFMC_Constant(14), "FMC_FLAG_FALLING_EDGE")
+    XCTAssertEqual(FMCConstants.FMC_FLAG_FEMPT, CFMC_Constant(15), "FMC_FLAG_FEMPT")
+    XCTAssertEqual(FMCConstants.FMC_FLAG_LEVEL, CFMC_Constant(16), "FMC_FLAG_LEVEL")
+    XCTAssertEqual(FMCConstants.FMC_FLAG_RISING_EDGE, CFMC_Constant(17), "FMC_FLAG_RISING_EDGE")
+    XCTAssertEqual(FMCConstants.FMC_IT_FALLING_EDGE, CFMC_Constant(18), "FMC_IT_FALLING_EDGE")
+    XCTAssertEqual(FMCConstants.FMC_IT_LEVEL, CFMC_Constant(19), "FMC_IT_LEVEL")
+    XCTAssertEqual(FMCConstants.FMC_IT_REFRESH_ERROR, CFMC_Constant(20), "FMC_IT_REFRESH_ERROR")
+    XCTAssertEqual(FMCConstants.FMC_IT_RISING_EDGE, CFMC_Constant(21), "FMC_IT_RISING_EDGE")
+    XCTAssertEqual(FMCConstants.FMC_MEMORY_TYPE_NOR, CFMC_Constant(22), "FMC_MEMORY_TYPE_NOR")
+    XCTAssertEqual(FMCConstants.FMC_MEMORY_TYPE_PSRAM, CFMC_Constant(23), "FMC_MEMORY_TYPE_PSRAM")
+    XCTAssertEqual(FMCConstants.FMC_MEMORY_TYPE_SRAM, CFMC_Constant(24), "FMC_MEMORY_TYPE_SRAM")
+    XCTAssertEqual(FMCConstants.FMC_NAND_BANK3, CFMC_Constant(25), "FMC_NAND_BANK3")
+    XCTAssertEqual(FMCConstants.FMC_NAND_ECC_DISABLE, CFMC_Constant(26), "FMC_NAND_ECC_DISABLE")
+    XCTAssertEqual(FMCConstants.FMC_NAND_ECC_ENABLE, CFMC_Constant(27), "FMC_NAND_ECC_ENABLE")
+    XCTAssertEqual(
+      FMCConstants.FMC_NAND_ECC_PAGE_SIZE_1024BYTE, CFMC_Constant(28),
+      "FMC_NAND_ECC_PAGE_SIZE_1024BYTE")
+    XCTAssertEqual(
+      FMCConstants.FMC_NAND_ECC_PAGE_SIZE_2048BYTE, CFMC_Constant(29),
+      "FMC_NAND_ECC_PAGE_SIZE_2048BYTE")
+    XCTAssertEqual(
+      FMCConstants.FMC_NAND_ECC_PAGE_SIZE_256BYTE, CFMC_Constant(30),
+      "FMC_NAND_ECC_PAGE_SIZE_256BYTE")
+    XCTAssertEqual(
+      FMCConstants.FMC_NAND_ECC_PAGE_SIZE_4096BYTE, CFMC_Constant(31),
+      "FMC_NAND_ECC_PAGE_SIZE_4096BYTE")
+    XCTAssertEqual(
+      FMCConstants.FMC_NAND_ECC_PAGE_SIZE_512BYTE, CFMC_Constant(32),
+      "FMC_NAND_ECC_PAGE_SIZE_512BYTE")
+    XCTAssertEqual(
+      FMCConstants.FMC_NAND_ECC_PAGE_SIZE_8192BYTE, CFMC_Constant(33),
+      "FMC_NAND_ECC_PAGE_SIZE_8192BYTE")
+    XCTAssertEqual(
+      FMCConstants.FMC_NAND_MEM_BUS_WIDTH_16, CFMC_Constant(34), "FMC_NAND_MEM_BUS_WIDTH_16")
+    XCTAssertEqual(
+      FMCConstants.FMC_NAND_MEM_BUS_WIDTH_8, CFMC_Constant(35), "FMC_NAND_MEM_BUS_WIDTH_8")
+    XCTAssertEqual(
+      FMCConstants.FMC_NAND_WAIT_FEATURE_DISABLE, CFMC_Constant(36), "FMC_NAND_WAIT_FEATURE_DISABLE"
+    )
+    XCTAssertEqual(
+      FMCConstants.FMC_NAND_WAIT_FEATURE_ENABLE, CFMC_Constant(37), "FMC_NAND_WAIT_FEATURE_ENABLE")
+    XCTAssertEqual(FMCConstants.FMC_NORSRAM_BANK1, CFMC_Constant(38), "FMC_NORSRAM_BANK1")
+    XCTAssertEqual(FMCConstants.FMC_NORSRAM_BANK2, CFMC_Constant(39), "FMC_NORSRAM_BANK2")
+    XCTAssertEqual(FMCConstants.FMC_NORSRAM_BANK3, CFMC_Constant(40), "FMC_NORSRAM_BANK3")
+    XCTAssertEqual(FMCConstants.FMC_NORSRAM_BANK4, CFMC_Constant(41), "FMC_NORSRAM_BANK4")
+    XCTAssertEqual(
+      FMCConstants.FMC_NORSRAM_FLASH_ACCESS_DISABLE, CFMC_Constant(42),
+      "FMC_NORSRAM_FLASH_ACCESS_DISABLE")
+    XCTAssertEqual(
+      FMCConstants.FMC_NORSRAM_FLASH_ACCESS_ENABLE, CFMC_Constant(43),
+      "FMC_NORSRAM_FLASH_ACCESS_ENABLE")
+    XCTAssertEqual(
+      FMCConstants.FMC_NORSRAM_MEM_BUS_WIDTH_16, CFMC_Constant(44), "FMC_NORSRAM_MEM_BUS_WIDTH_16")
+    XCTAssertEqual(
+      FMCConstants.FMC_NORSRAM_MEM_BUS_WIDTH_32, CFMC_Constant(45), "FMC_NORSRAM_MEM_BUS_WIDTH_32")
+    XCTAssertEqual(
+      FMCConstants.FMC_NORSRAM_MEM_BUS_WIDTH_8, CFMC_Constant(46), "FMC_NORSRAM_MEM_BUS_WIDTH_8")
+    XCTAssertEqual(FMCConstants.FMC_PAGE_SIZE_1024, CFMC_Constant(47), "FMC_PAGE_SIZE_1024")
+    XCTAssertEqual(FMCConstants.FMC_PAGE_SIZE_128, CFMC_Constant(48), "FMC_PAGE_SIZE_128")
+    XCTAssertEqual(FMCConstants.FMC_PAGE_SIZE_256, CFMC_Constant(49), "FMC_PAGE_SIZE_256")
+    XCTAssertEqual(FMCConstants.FMC_PAGE_SIZE_512, CFMC_Constant(50), "FMC_PAGE_SIZE_512")
+    XCTAssertEqual(FMCConstants.FMC_PAGE_SIZE_NONE, CFMC_Constant(51), "FMC_PAGE_SIZE_NONE")
+    XCTAssertEqual(
+      FMCConstants.FMC_PCR_MEMORY_TYPE_NAND, CFMC_Constant(52), "FMC_PCR_MEMORY_TYPE_NAND")
+    XCTAssertEqual(FMCConstants.FMC_SDRAM_BANK1, CFMC_Constant(53), "FMC_SDRAM_BANK1")
+    XCTAssertEqual(FMCConstants.FMC_SDRAM_BANK2, CFMC_Constant(54), "FMC_SDRAM_BANK2")
+    XCTAssertEqual(
+      FMCConstants.FMC_SDRAM_CAS_LATENCY_1, CFMC_Constant(55), "FMC_SDRAM_CAS_LATENCY_1")
+    XCTAssertEqual(
+      FMCConstants.FMC_SDRAM_CAS_LATENCY_2, CFMC_Constant(56), "FMC_SDRAM_CAS_LATENCY_2")
+    XCTAssertEqual(
+      FMCConstants.FMC_SDRAM_CAS_LATENCY_3, CFMC_Constant(57), "FMC_SDRAM_CAS_LATENCY_3")
+    XCTAssertEqual(
+      FMCConstants.FMC_SDRAM_CLOCK_DISABLE, CFMC_Constant(58), "FMC_SDRAM_CLOCK_DISABLE")
+    XCTAssertEqual(
+      FMCConstants.FMC_SDRAM_CLOCK_PERIOD_2, CFMC_Constant(59), "FMC_SDRAM_CLOCK_PERIOD_2")
+    XCTAssertEqual(
+      FMCConstants.FMC_SDRAM_CLOCK_PERIOD_3, CFMC_Constant(60), "FMC_SDRAM_CLOCK_PERIOD_3")
+    XCTAssertEqual(
+      FMCConstants.FMC_SDRAM_CMD_AUTOREFRESH_MODE, CFMC_Constant(61),
+      "FMC_SDRAM_CMD_AUTOREFRESH_MODE")
+    XCTAssertEqual(
+      FMCConstants.FMC_SDRAM_CMD_CLK_ENABLE, CFMC_Constant(62), "FMC_SDRAM_CMD_CLK_ENABLE")
+    XCTAssertEqual(
+      FMCConstants.FMC_SDRAM_CMD_LOAD_MODE, CFMC_Constant(63), "FMC_SDRAM_CMD_LOAD_MODE")
+    XCTAssertEqual(
+      FMCConstants.FMC_SDRAM_CMD_NORMAL_MODE, CFMC_Constant(64), "FMC_SDRAM_CMD_NORMAL_MODE")
+    XCTAssertEqual(FMCConstants.FMC_SDRAM_CMD_PALL, CFMC_Constant(65), "FMC_SDRAM_CMD_PALL")
+    XCTAssertEqual(
+      FMCConstants.FMC_SDRAM_CMD_POWERDOWN_MODE, CFMC_Constant(66), "FMC_SDRAM_CMD_POWERDOWN_MODE")
+    XCTAssertEqual(
+      FMCConstants.FMC_SDRAM_CMD_SELFREFRESH_MODE, CFMC_Constant(67),
+      "FMC_SDRAM_CMD_SELFREFRESH_MODE")
+    XCTAssertEqual(
+      FMCConstants.FMC_SDRAM_CMD_TARGET_BANK1, CFMC_Constant(68), "FMC_SDRAM_CMD_TARGET_BANK1")
+    XCTAssertEqual(
+      FMCConstants.FMC_SDRAM_CMD_TARGET_BANK1_2, CFMC_Constant(69), "FMC_SDRAM_CMD_TARGET_BANK1_2")
+    XCTAssertEqual(
+      FMCConstants.FMC_SDRAM_CMD_TARGET_BANK2, CFMC_Constant(70), "FMC_SDRAM_CMD_TARGET_BANK2")
+    XCTAssertEqual(
+      FMCConstants.FMC_SDRAM_COLUMN_BITS_NUM_10, CFMC_Constant(71), "FMC_SDRAM_COLUMN_BITS_NUM_10")
+    XCTAssertEqual(
+      FMCConstants.FMC_SDRAM_COLUMN_BITS_NUM_11, CFMC_Constant(72), "FMC_SDRAM_COLUMN_BITS_NUM_11")
+    XCTAssertEqual(
+      FMCConstants.FMC_SDRAM_COLUMN_BITS_NUM_8, CFMC_Constant(73), "FMC_SDRAM_COLUMN_BITS_NUM_8")
+    XCTAssertEqual(
+      FMCConstants.FMC_SDRAM_COLUMN_BITS_NUM_9, CFMC_Constant(74), "FMC_SDRAM_COLUMN_BITS_NUM_9")
+    XCTAssertEqual(
+      FMCConstants.FMC_SDRAM_FLAG_REFRESH_ERROR, CFMC_Constant(75), "FMC_SDRAM_FLAG_REFRESH_ERROR")
+    XCTAssertEqual(
+      FMCConstants.FMC_SDRAM_FLAG_REFRESH_IT, CFMC_Constant(76), "FMC_SDRAM_FLAG_REFRESH_IT")
+    XCTAssertEqual(
+      FMCConstants.FMC_SDRAM_INTERN_BANKS_NUM_2, CFMC_Constant(77), "FMC_SDRAM_INTERN_BANKS_NUM_2")
+    XCTAssertEqual(
+      FMCConstants.FMC_SDRAM_INTERN_BANKS_NUM_4, CFMC_Constant(78), "FMC_SDRAM_INTERN_BANKS_NUM_4")
+    XCTAssertEqual(
+      FMCConstants.FMC_SDRAM_MEM_BUS_WIDTH_16, CFMC_Constant(79), "FMC_SDRAM_MEM_BUS_WIDTH_16")
+    XCTAssertEqual(
+      FMCConstants.FMC_SDRAM_MEM_BUS_WIDTH_32, CFMC_Constant(80), "FMC_SDRAM_MEM_BUS_WIDTH_32")
+    XCTAssertEqual(
+      FMCConstants.FMC_SDRAM_MEM_BUS_WIDTH_8, CFMC_Constant(81), "FMC_SDRAM_MEM_BUS_WIDTH_8")
+    XCTAssertEqual(FMCConstants.FMC_SDRAM_NORMAL_MODE, CFMC_Constant(82), "FMC_SDRAM_NORMAL_MODE")
+    XCTAssertEqual(
+      FMCConstants.FMC_SDRAM_POWER_DOWN_MODE, CFMC_Constant(83), "FMC_SDRAM_POWER_DOWN_MODE")
+    XCTAssertEqual(
+      FMCConstants.FMC_SDRAM_RBURST_DISABLE, CFMC_Constant(84), "FMC_SDRAM_RBURST_DISABLE")
+    XCTAssertEqual(
+      FMCConstants.FMC_SDRAM_RBURST_ENABLE, CFMC_Constant(85), "FMC_SDRAM_RBURST_ENABLE")
+    XCTAssertEqual(
+      FMCConstants.FMC_SDRAM_ROW_BITS_NUM_11, CFMC_Constant(86), "FMC_SDRAM_ROW_BITS_NUM_11")
+    XCTAssertEqual(
+      FMCConstants.FMC_SDRAM_ROW_BITS_NUM_12, CFMC_Constant(87), "FMC_SDRAM_ROW_BITS_NUM_12")
+    XCTAssertEqual(
+      FMCConstants.FMC_SDRAM_ROW_BITS_NUM_13, CFMC_Constant(88), "FMC_SDRAM_ROW_BITS_NUM_13")
+    XCTAssertEqual(
+      FMCConstants.FMC_SDRAM_RPIPE_DELAY_0, CFMC_Constant(89), "FMC_SDRAM_RPIPE_DELAY_0")
+    XCTAssertEqual(
+      FMCConstants.FMC_SDRAM_RPIPE_DELAY_1, CFMC_Constant(90), "FMC_SDRAM_RPIPE_DELAY_1")
+    XCTAssertEqual(
+      FMCConstants.FMC_SDRAM_RPIPE_DELAY_2, CFMC_Constant(91), "FMC_SDRAM_RPIPE_DELAY_2")
+    XCTAssertEqual(
+      FMCConstants.FMC_SDRAM_SELF_REFRESH_MODE, CFMC_Constant(92), "FMC_SDRAM_SELF_REFRESH_MODE")
+    XCTAssertEqual(
+      FMCConstants.FMC_SDRAM_WRITE_PROTECTION_DISABLE, CFMC_Constant(93),
+      "FMC_SDRAM_WRITE_PROTECTION_DISABLE")
+    XCTAssertEqual(
+      FMCConstants.FMC_SDRAM_WRITE_PROTECTION_ENABLE, CFMC_Constant(94),
+      "FMC_SDRAM_WRITE_PROTECTION_ENABLE")
+    XCTAssertEqual(
+      FMCConstants.FMC_WAIT_SIGNAL_DISABLE, CFMC_Constant(95), "FMC_WAIT_SIGNAL_DISABLE")
+    XCTAssertEqual(FMCConstants.FMC_WAIT_SIGNAL_ENABLE, CFMC_Constant(96), "FMC_WAIT_SIGNAL_ENABLE")
+    XCTAssertEqual(
+      FMCConstants.FMC_WAIT_SIGNAL_POLARITY_HIGH, CFMC_Constant(97), "FMC_WAIT_SIGNAL_POLARITY_HIGH"
+    )
+    XCTAssertEqual(
+      FMCConstants.FMC_WAIT_SIGNAL_POLARITY_LOW, CFMC_Constant(98), "FMC_WAIT_SIGNAL_POLARITY_LOW")
+    XCTAssertEqual(
+      FMCConstants.FMC_WAIT_TIMING_BEFORE_WS, CFMC_Constant(99), "FMC_WAIT_TIMING_BEFORE_WS")
+    XCTAssertEqual(
+      FMCConstants.FMC_WAIT_TIMING_DURING_WS, CFMC_Constant(100), "FMC_WAIT_TIMING_DURING_WS")
+    XCTAssertEqual(
+      FMCConstants.FMC_WRITE_BURST_DISABLE, CFMC_Constant(101), "FMC_WRITE_BURST_DISABLE")
+    XCTAssertEqual(
+      FMCConstants.FMC_WRITE_BURST_ENABLE, CFMC_Constant(102), "FMC_WRITE_BURST_ENABLE")
+    XCTAssertEqual(
+      FMCConstants.FMC_WRITE_FIFO_DISABLE, CFMC_Constant(103), "FMC_WRITE_FIFO_DISABLE")
+    XCTAssertEqual(FMCConstants.FMC_WRITE_FIFO_ENABLE, CFMC_Constant(104), "FMC_WRITE_FIFO_ENABLE")
+    XCTAssertEqual(
+      FMCConstants.FMC_WRITE_OPERATION_DISABLE, CFMC_Constant(105), "FMC_WRITE_OPERATION_DISABLE")
+    XCTAssertEqual(
+      FMCConstants.FMC_WRITE_OPERATION_ENABLE, CFMC_Constant(106), "FMC_WRITE_OPERATION_ENABLE")
+  }
+}
