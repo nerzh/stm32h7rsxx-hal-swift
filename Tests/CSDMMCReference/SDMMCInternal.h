@@ -16,5 +16,6 @@ struct CSDMMCState {
  uint32_t output;
 };
 void CSDMMC_Bind(SDMMC_TypeDef *,uint32_t *,uint32_t *,uint32_t *);
+void CSDMMC_SetCommandHook(void (*)(void *,uint32_t),void *);
 uint32_t CSDMMC_GetCmdError(SDMMC_TypeDef *);
 #endif

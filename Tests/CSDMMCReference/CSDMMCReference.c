@@ -6,8 +6,11 @@
 #endif
 static CSDMMC_THREAD_LOCAL SDMMC_TypeDef *activeRegs;
 static CSDMMC_THREAD_LOCAL uint32_t *activeControl,*activeResponses,*activeTrace;
+static CSDMMC_THREAD_LOCAL void (*commandHook)(void *,uint32_t);
+static CSDMMC_THREAD_LOCAL void *commandHookContext;
+void CSDMMC_SetCommandHook(void (*hook)(void *,uint32_t),void *context){commandHook=hook;commandHookContext=context;}
 void CSDMMC_Bind(SDMMC_TypeDef *r,uint32_t *c,uint32_t *responses,uint32_t *trace){
- activeRegs=r;activeControl=c;activeResponses=responses;activeTrace=trace;
+ activeRegs=r;activeControl=c;activeResponses=responses;activeTrace=trace;commandHook=NULL;commandHookContext=NULL;
 }
 static void Activate(CSDMMCState *s){CSDMMC_Bind(&s->regs,s->control,&s->responses[0][0],s->commandTrace);}
 uint32_t CSDMMC_CoreClock(void){activeControl[1]++;return activeControl[0];}
@@ -23,14 +26,17 @@ void CSDMMC_WriteVolatile(volatile uint32_t *p,uint32_t v){
  *p=v;
  if(p==&activeRegs->FIFO)CSDMMC_FIFOAfterWord();
  if(p==&activeRegs->CMD){
-  uint32_t i=activeControl[2];assert(i+4<=1024);
+  uint32_t i=activeControl[2];
+  if(activeControl[12]&&i==1024){i=0;activeControl[13]++;}
+  assert(i+4<=1024);
   activeTrace[i++]=activeRegs->ARG;activeTrace[i++]=v;
   activeTrace[i++]=activeRegs->CLKCR;activeTrace[i++]=activeRegs->DCTRL;activeControl[2]=i;
   if(activeControl[4]){
    uint32_t *r=&activeResponses[(v&63)*6];
    activeRegs->STA=r[0];activeRegs->RESPCMD=r[1];
    activeRegs->RESP1=r[2];activeRegs->RESP2=r[3];activeRegs->RESP3=r[4];activeRegs->RESP4=r[5];
-   if(activeControl[8]&&(r[0]&(0x4000U|0x8000U))){activeControl[5]=activeRegs->DLEN/4;activeControl[6]=(r[0]&~(0x4000U|0x8000U|0x1000U))|0x100U;}
+   if(commandHook)commandHook(commandHookContext,v);
+   if(activeControl[8]&&(r[0]&(0x4000U|0x8000U))){activeControl[5]=(activeRegs->DLEN+(activeControl[14]?3U:0U))/4;activeControl[6]=(r[0]&~(0x4000U|0x8000U|0x1000U))|0x100U;}
   }
  }
 }
