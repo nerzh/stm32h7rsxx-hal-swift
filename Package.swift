@@ -28,6 +28,8 @@ var targets: [Target] = [
     .target(name: "CCORDICReference", path: "Tests/CCORDICReference", publicHeadersPath: "include"),
     .target(name: "CSystemReference", path: "Tests/CSystemReference", publicHeadersPath: "include"),
     .target(name: "CHASHReference", path: "Tests/CHASHReference", publicHeadersPath: "include"),
+    .target(name: "CMCEReference", path: "Tests/CMCEReference", publicHeadersPath: "include",
+            cSettings: [.headerSearchPath(".")]),
     .target(name: "CPSSIReference", path: "Tests/CPSSIReference", publicHeadersPath: "include",
             cSettings: [.headerSearchPath(".")]),
     .target(name: "CSerialControlReference", path: "Tests/CSerialControlReference", publicHeadersPath: "include",
@@ -44,7 +46,7 @@ var targets: [Target] = [
             cSettings: [.headerSearchPath(".")]),
     .target(name: "CGraphicsReference", path: "Tests/CGraphicsReference", publicHeadersPath: "include",
             cSettings: [.headerSearchPath(".")]),
-    .testTarget(name: "STM32H7RSHALTests", dependencies: ["STM32H7RSHAL", "CGPIOReference", "CTimeReference", "CRCCReference", "CRCCControlReference", "CRCCExtendedReference", "CRNGReference", "CWatchdogReference", "CDMAReference", "CICacheReference", "CUARTReference", "CDTSReference", "CFLASHReference", "CCORDICReference", "CSystemReference", "CHASHReference", "CGraphicsReference", "CGFXTIMReference", "CDMA2DReference", "CLTDCReference", "CDCMIPPReference", "CLPTIMReference", "CSerialControlReference", "CPSSIReference"]),
+    .testTarget(name: "STM32H7RSHALTests", dependencies: ["STM32H7RSHAL", "CGPIOReference", "CTimeReference", "CRCCReference", "CRCCControlReference", "CRCCExtendedReference", "CRNGReference", "CWatchdogReference", "CDMAReference", "CICacheReference", "CUARTReference", "CDTSReference", "CFLASHReference", "CCORDICReference", "CSystemReference", "CHASHReference", "CGraphicsReference", "CGFXTIMReference", "CDMA2DReference", "CLTDCReference", "CDCMIPPReference", "CLPTIMReference", "CSerialControlReference", "CPSSIReference", "CMCEReference"]),
 ]
 var dependencies: [Package.Dependency] = []
 if let device {
@@ -72,7 +74,7 @@ if let device {
 
 let package = Package(
     name: "stm32h7rsxx-hal-swift",
-    platforms: [.macOS(.v15)],
+    platforms: [.macOS(.v26)],
     products: products,
     dependencies: dependencies,
     targets: targets

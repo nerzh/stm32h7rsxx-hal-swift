@@ -9,11 +9,12 @@ Tests/CDTSReference, Tests/CFLASHReference, Tests/CCORDICReference,
 Tests/CSystemReference, Tests/CHASHReference, Tests/CGraphicsReference,
 Tests/CGFXTIMReference, Tests/CDMA2DReference, Tests/CLTDCReference,
 Tests/CDCMIPPReference, Tests/CLPTIMReference, Tests/CSerialControlReference,
-and Tests/CPSSIReference
+Tests/CPSSIReference, and Tests/CMCEReference
 derive from STMicroelectronics/stm32h7rsxx-hal-driver, revision
 606ed7132ef1bc32c77fd9a040103bc98f23c748.
 
 Copyright (c) 2022 STMicroelectronics. All rights reserved.
+MCE source and header: Copyright (c) 2024 STMicroelectronics. All rights reserved.
 Upstream package copyright: Copyright 2022(-2023) STMicroelectronics.
 
 The full license is in STM32H7RSxx-HAL-BSD-3-Clause.txt in this directory.
