@@ -346,22 +346,7 @@ extension UART {
     precondition(handle.read(.clockPrescaler) <= 11)
   }
 
-  static func prescalerDivisor(_ index: UInt32) -> UInt32 {
-    switch index {
-    case 0: return 1
-    case 1: return 2
-    case 2: return 4
-    case 3: return 6
-    case 4: return 8
-    case 5: return 10
-    case 6: return 12
-    case 7: return 16
-    case 8: return 32
-    case 9: return 64
-    case 10: return 128
-    default: return 256
-    }
-  }
+  static func prescalerDivisor(_ index: UInt32) -> UInt32 { serialPrescalerDivisor(index) }
 
   func modify(_ register: UARTRegister, clear: UInt32, set: UInt32) {
     registers.write(register, value: (registers.read(register) & ~clear) | set)

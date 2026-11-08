@@ -28,6 +28,8 @@ var targets: [Target] = [
     .target(name: "CCORDICReference", path: "Tests/CCORDICReference", publicHeadersPath: "include"),
     .target(name: "CSystemReference", path: "Tests/CSystemReference", publicHeadersPath: "include"),
     .target(name: "CHASHReference", path: "Tests/CHASHReference", publicHeadersPath: "include"),
+    .target(name: "CUSARTReference", path: "Tests/CUSARTReference", publicHeadersPath: "include",
+            cSettings: [.headerSearchPath(".")]),
     .target(name: "CFDCANReference", path: "Tests/CFDCANReference", publicHeadersPath: "include",
             cSettings: [.headerSearchPath(".")]),
     .target(name: "CADCReference", path: "Tests/CADCReference", publicHeadersPath: "include",
@@ -60,7 +62,7 @@ var targets: [Target] = [
             cSettings: [.headerSearchPath(".")]),
     .target(name: "CGraphicsReference", path: "Tests/CGraphicsReference", publicHeadersPath: "include",
             cSettings: [.headerSearchPath(".")]),
-    .testTarget(name: "STM32H7RSHALTests", dependencies: ["STM32H7RSHAL", "CGPIOReference", "CTimeReference", "CRCCReference", "CRCCControlReference", "CRCCExtendedReference", "CRNGReference", "CWatchdogReference", "CDMAReference", "CICacheReference", "CUARTReference", "CDTSReference", "CFLASHReference", "CCORDICReference", "CSystemReference", "CHASHReference", "CGraphicsReference", "CGFXTIMReference", "CDMA2DReference", "CLTDCReference", "CDCMIPPReference", "CLPTIMReference", "CSerialControlReference", "CPSSIReference", "CMCEReference", "CSPDIFRXReference", "CMDFReference", "CJPEGReference", "CRTCReference", "CPKAReference", "CADCReference", "CFDCANReference"]),
+    .testTarget(name: "STM32H7RSHALTests", dependencies: ["STM32H7RSHAL", "CGPIOReference", "CTimeReference", "CRCCReference", "CRCCControlReference", "CRCCExtendedReference", "CRNGReference", "CWatchdogReference", "CDMAReference", "CICacheReference", "CUARTReference", "CDTSReference", "CFLASHReference", "CCORDICReference", "CSystemReference", "CHASHReference", "CGraphicsReference", "CGFXTIMReference", "CDMA2DReference", "CLTDCReference", "CDCMIPPReference", "CLPTIMReference", "CSerialControlReference", "CPSSIReference", "CMCEReference", "CSPDIFRXReference", "CMDFReference", "CJPEGReference", "CRTCReference", "CPKAReference", "CADCReference", "CFDCANReference", "CUSARTReference"]),
 ]
 var dependencies: [Package.Dependency] = []
 if let device {
