@@ -57,3 +57,7 @@ public struct STM32UARTClockRegisters: UARTClockIO {
         }
     }
 }
+
+extension STM32UARTClockRegisters: IRDAClockIO {
+    public func unprescaledHSIFrequency() -> UInt32 { oscillators.hsi }
+}

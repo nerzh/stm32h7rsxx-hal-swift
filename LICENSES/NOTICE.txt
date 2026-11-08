@@ -10,7 +10,9 @@ Tests/CSystemReference, Tests/CHASHReference, Tests/CGraphicsReference,
 Tests/CGFXTIMReference, Tests/CDMA2DReference, Tests/CLTDCReference,
 Tests/CDCMIPPReference, Tests/CLPTIMReference, Tests/CSerialControlReference,
 Tests/CPSSIReference, Tests/CMCEReference, Tests/CSPDIFRXReference,
-Tests/CMDFReference, Tests/CJPEGReference, Tests/CRTCReference, and Tests/CPKAReference
+Tests/CMDFReference, Tests/CJPEGReference, Tests/CRTCReference, Tests/CPKAReference,
+Tests/CADCReference, Tests/CFDCANReference, Tests/CUSARTReference,
+Tests/CIRDAReference, and Tests/CSMARTCARDReference
 derive from STMicroelectronics/stm32h7rsxx-hal-driver, revision
 606ed7132ef1bc32c77fd9a040103bc98f23c748.
 

@@ -1,5 +1,6 @@
 import CCortexHALSupport
 import STM32H7RSHAL
+import _Volatile
 #if STM32H7R
 import STM32H7R
 typealias DeviceUSART = STM32H7R.USART1
@@ -79,7 +80,10 @@ public struct STM32UARTRegisters: UARTRegisterIO {
         case .rdr: return usart.rdr.read().raw.storage
         case .tdr: return usart.tdr.read().raw.storage
         case .presc: return usart.presc.read().raw.storage
-        case .icr: preconditionFailure("UART interrupt-clear register is write-only")
+        case .icr:
+            // SMARTCARD's C macros read ICR before modifying it, although the SVD
+            // marks it write-only. Preserve the original volatile bus access.
+            return VolatileMappedRegister<UInt32>(unsafeBitPattern: usart.icr.unsafeAddress).load()
         }
     }
 
