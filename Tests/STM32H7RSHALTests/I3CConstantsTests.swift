@@ -1,0 +1,279 @@
+import CI3CReference
+import STM32H7RSHAL
+import XCTest
+
+final class I3CConstantsTests: XCTestCase {
+  func testPublicConstantsMatchC() {
+    XCTAssertEqual(I3CConstants.EVENT_ID_CR, CI3C_Constant(0), "EVENT_ID_CR")
+    XCTAssertEqual(I3CConstants.EVENT_ID_DAU, CI3C_Constant(1), "EVENT_ID_DAU")
+    XCTAssertEqual(I3CConstants.EVENT_ID_DEFGRPA, CI3C_Constant(2), "EVENT_ID_DEFGRPA")
+    XCTAssertEqual(I3CConstants.EVENT_ID_DEFTGTS, CI3C_Constant(3), "EVENT_ID_DEFTGTS")
+    XCTAssertEqual(I3CConstants.EVENT_ID_ENEC_DISEC, CI3C_Constant(4), "EVENT_ID_ENEC_DISEC")
+    XCTAssertEqual(I3CConstants.EVENT_ID_ENTASx, CI3C_Constant(5), "EVENT_ID_ENTASx")
+    XCTAssertEqual(I3CConstants.EVENT_ID_GETACCCR, CI3C_Constant(6), "EVENT_ID_GETACCCR")
+    XCTAssertEqual(I3CConstants.EVENT_ID_GETSTATUS, CI3C_Constant(7), "EVENT_ID_GETSTATUS")
+    XCTAssertEqual(I3CConstants.EVENT_ID_GETx, CI3C_Constant(8), "EVENT_ID_GETx")
+    XCTAssertEqual(I3CConstants.EVENT_ID_HJ, CI3C_Constant(9), "EVENT_ID_HJ")
+    XCTAssertEqual(I3CConstants.EVENT_ID_IBI, CI3C_Constant(10), "EVENT_ID_IBI")
+    XCTAssertEqual(I3CConstants.EVENT_ID_IBIEND, CI3C_Constant(11), "EVENT_ID_IBIEND")
+    XCTAssertEqual(I3CConstants.EVENT_ID_RSTACT, CI3C_Constant(12), "EVENT_ID_RSTACT")
+    XCTAssertEqual(I3CConstants.EVENT_ID_SETMRL, CI3C_Constant(13), "EVENT_ID_SETMRL")
+    XCTAssertEqual(I3CConstants.EVENT_ID_SETMWL, CI3C_Constant(14), "EVENT_ID_SETMWL")
+    XCTAssertEqual(I3CConstants.EVENT_ID_WKP, CI3C_Constant(15), "EVENT_ID_WKP")
+    XCTAssertEqual(I3CConstants.HAL_I3C_ABORT_CB_ID, CI3C_Constant(16), "HAL_I3C_ABORT_CB_ID")
+    XCTAssertEqual(I3CConstants.HAL_I3C_ALL_COMMON_ITS, CI3C_Constant(17), "HAL_I3C_ALL_COMMON_ITS")
+    XCTAssertEqual(I3CConstants.HAL_I3C_ALL_CTRL_ITS, CI3C_Constant(18), "HAL_I3C_ALL_CTRL_ITS")
+    XCTAssertEqual(I3CConstants.HAL_I3C_ALL_TGT_ITS, CI3C_Constant(19), "HAL_I3C_ALL_TGT_ITS")
+    XCTAssertEqual(
+      I3CConstants.HAL_I3C_BCR_IN_PAYLOAD_SHIFT, CI3C_Constant(20), "HAL_I3C_BCR_IN_PAYLOAD_SHIFT")
+    XCTAssertEqual(
+      I3CConstants.HAL_I3C_CONTROLFIFO_DISABLE, CI3C_Constant(21), "HAL_I3C_CONTROLFIFO_DISABLE")
+    XCTAssertEqual(
+      I3CConstants.HAL_I3C_CONTROLFIFO_ENABLE, CI3C_Constant(22), "HAL_I3C_CONTROLFIFO_ENABLE")
+    XCTAssertEqual(
+      I3CConstants.HAL_I3C_CTRL_DAA_COMPLETE_CB_ID, CI3C_Constant(23),
+      "HAL_I3C_CTRL_DAA_COMPLETE_CB_ID")
+    XCTAssertEqual(
+      I3CConstants.HAL_I3C_CTRL_MULTIPLE_XFER_COMPLETE_CB_ID, CI3C_Constant(24),
+      "HAL_I3C_CTRL_MULTIPLE_XFER_COMPLETE_CB_ID")
+    XCTAssertEqual(
+      I3CConstants.HAL_I3C_CTRL_RX_COMPLETE_CB_ID, CI3C_Constant(25),
+      "HAL_I3C_CTRL_RX_COMPLETE_CB_ID")
+    XCTAssertEqual(
+      I3CConstants.HAL_I3C_CTRL_TX_COMPLETE_CB_ID, CI3C_Constant(26),
+      "HAL_I3C_CTRL_TX_COMPLETE_CB_ID")
+    XCTAssertEqual(I3CConstants.HAL_I3C_DIRECTION_BOTH, CI3C_Constant(27), "HAL_I3C_DIRECTION_BOTH")
+    XCTAssertEqual(I3CConstants.HAL_I3C_DIRECTION_READ, CI3C_Constant(28), "HAL_I3C_DIRECTION_READ")
+    XCTAssertEqual(
+      I3CConstants.HAL_I3C_DIRECTION_WRITE, CI3C_Constant(29), "HAL_I3C_DIRECTION_WRITE")
+    XCTAssertEqual(
+      I3CConstants.HAL_I3C_ERROR_ADDRESS_NACK, CI3C_Constant(30), "HAL_I3C_ERROR_ADDRESS_NACK")
+    XCTAssertEqual(I3CConstants.HAL_I3C_ERROR_CB_ID, CI3C_Constant(31), "HAL_I3C_ERROR_CB_ID")
+    XCTAssertEqual(I3CConstants.HAL_I3C_ERROR_CE0, CI3C_Constant(32), "HAL_I3C_ERROR_CE0")
+    XCTAssertEqual(I3CConstants.HAL_I3C_ERROR_CE1, CI3C_Constant(33), "HAL_I3C_ERROR_CE1")
+    XCTAssertEqual(I3CConstants.HAL_I3C_ERROR_CE2, CI3C_Constant(34), "HAL_I3C_ERROR_CE2")
+    XCTAssertEqual(I3CConstants.HAL_I3C_ERROR_CE3, CI3C_Constant(35), "HAL_I3C_ERROR_CE3")
+    XCTAssertEqual(I3CConstants.HAL_I3C_ERROR_COVR, CI3C_Constant(36), "HAL_I3C_ERROR_COVR")
+    XCTAssertEqual(
+      I3CConstants.HAL_I3C_ERROR_DATA_HAND_OFF, CI3C_Constant(37), "HAL_I3C_ERROR_DATA_HAND_OFF")
+    XCTAssertEqual(
+      I3CConstants.HAL_I3C_ERROR_DATA_NACK, CI3C_Constant(38), "HAL_I3C_ERROR_DATA_NACK")
+    XCTAssertEqual(I3CConstants.HAL_I3C_ERROR_DMA, CI3C_Constant(39), "HAL_I3C_ERROR_DMA")
+    XCTAssertEqual(
+      I3CConstants.HAL_I3C_ERROR_DMA_PARAM, CI3C_Constant(40), "HAL_I3C_ERROR_DMA_PARAM")
+    XCTAssertEqual(I3CConstants.HAL_I3C_ERROR_DOVR, CI3C_Constant(41), "HAL_I3C_ERROR_DOVR")
+    XCTAssertEqual(
+      I3CConstants.HAL_I3C_ERROR_DYNAMIC_ADDR, CI3C_Constant(42), "HAL_I3C_ERROR_DYNAMIC_ADDR")
+    XCTAssertEqual(
+      I3CConstants.HAL_I3C_ERROR_INVALID_CALLBACK, CI3C_Constant(43),
+      "HAL_I3C_ERROR_INVALID_CALLBACK")
+    XCTAssertEqual(
+      I3CConstants.HAL_I3C_ERROR_INVALID_PARAM, CI3C_Constant(44), "HAL_I3C_ERROR_INVALID_PARAM")
+    XCTAssertEqual(I3CConstants.HAL_I3C_ERROR_NONE, CI3C_Constant(45), "HAL_I3C_ERROR_NONE")
+    XCTAssertEqual(
+      I3CConstants.HAL_I3C_ERROR_NOT_ALLOWED, CI3C_Constant(46), "HAL_I3C_ERROR_NOT_ALLOWED")
+    XCTAssertEqual(I3CConstants.HAL_I3C_ERROR_SIZE, CI3C_Constant(47), "HAL_I3C_ERROR_SIZE")
+    XCTAssertEqual(I3CConstants.HAL_I3C_ERROR_STALL, CI3C_Constant(48), "HAL_I3C_ERROR_STALL")
+    XCTAssertEqual(I3CConstants.HAL_I3C_ERROR_TE0, CI3C_Constant(49), "HAL_I3C_ERROR_TE0")
+    XCTAssertEqual(I3CConstants.HAL_I3C_ERROR_TE1, CI3C_Constant(50), "HAL_I3C_ERROR_TE1")
+    XCTAssertEqual(I3CConstants.HAL_I3C_ERROR_TE2, CI3C_Constant(51), "HAL_I3C_ERROR_TE2")
+    XCTAssertEqual(I3CConstants.HAL_I3C_ERROR_TE3, CI3C_Constant(52), "HAL_I3C_ERROR_TE3")
+    XCTAssertEqual(I3CConstants.HAL_I3C_ERROR_TE4, CI3C_Constant(53), "HAL_I3C_ERROR_TE4")
+    XCTAssertEqual(I3CConstants.HAL_I3C_ERROR_TE5, CI3C_Constant(54), "HAL_I3C_ERROR_TE5")
+    XCTAssertEqual(I3CConstants.HAL_I3C_ERROR_TE6, CI3C_Constant(55), "HAL_I3C_ERROR_TE6")
+    XCTAssertEqual(I3CConstants.HAL_I3C_ERROR_TIMEOUT, CI3C_Constant(56), "HAL_I3C_ERROR_TIMEOUT")
+    XCTAssertEqual(I3CConstants.HAL_I3C_FLAG_ASUPDF, CI3C_Constant(57), "HAL_I3C_FLAG_ASUPDF")
+    XCTAssertEqual(I3CConstants.HAL_I3C_FLAG_CFEF, CI3C_Constant(58), "HAL_I3C_FLAG_CFEF")
+    XCTAssertEqual(I3CConstants.HAL_I3C_FLAG_CFNFF, CI3C_Constant(59), "HAL_I3C_FLAG_CFNFF")
+    XCTAssertEqual(I3CConstants.HAL_I3C_FLAG_CRF, CI3C_Constant(60), "HAL_I3C_FLAG_CRF")
+    XCTAssertEqual(I3CConstants.HAL_I3C_FLAG_CRUPDF, CI3C_Constant(61), "HAL_I3C_FLAG_CRUPDF")
+    XCTAssertEqual(I3CConstants.HAL_I3C_FLAG_DAUPDF, CI3C_Constant(62), "HAL_I3C_FLAG_DAUPDF")
+    XCTAssertEqual(I3CConstants.HAL_I3C_FLAG_DEFF, CI3C_Constant(63), "HAL_I3C_FLAG_DEFF")
+    XCTAssertEqual(I3CConstants.HAL_I3C_FLAG_ERRF, CI3C_Constant(64), "HAL_I3C_FLAG_ERRF")
+    XCTAssertEqual(I3CConstants.HAL_I3C_FLAG_FCF, CI3C_Constant(65), "HAL_I3C_FLAG_FCF")
+    XCTAssertEqual(I3CConstants.HAL_I3C_FLAG_GETF, CI3C_Constant(66), "HAL_I3C_FLAG_GETF")
+    XCTAssertEqual(I3CConstants.HAL_I3C_FLAG_GRPF, CI3C_Constant(67), "HAL_I3C_FLAG_GRPF")
+    XCTAssertEqual(I3CConstants.HAL_I3C_FLAG_HJF, CI3C_Constant(68), "HAL_I3C_FLAG_HJF")
+    XCTAssertEqual(I3CConstants.HAL_I3C_FLAG_IBIENDF, CI3C_Constant(69), "HAL_I3C_FLAG_IBIENDF")
+    XCTAssertEqual(I3CConstants.HAL_I3C_FLAG_IBIF, CI3C_Constant(70), "HAL_I3C_FLAG_IBIF")
+    XCTAssertEqual(I3CConstants.HAL_I3C_FLAG_INTUPDF, CI3C_Constant(71), "HAL_I3C_FLAG_INTUPDF")
+    XCTAssertEqual(I3CConstants.HAL_I3C_FLAG_MRLUPDF, CI3C_Constant(72), "HAL_I3C_FLAG_MRLUPDF")
+    XCTAssertEqual(I3CConstants.HAL_I3C_FLAG_MWLUPDF, CI3C_Constant(73), "HAL_I3C_FLAG_MWLUPDF")
+    XCTAssertEqual(I3CConstants.HAL_I3C_FLAG_RSTF, CI3C_Constant(74), "HAL_I3C_FLAG_RSTF")
+    XCTAssertEqual(I3CConstants.HAL_I3C_FLAG_RXFNEF, CI3C_Constant(75), "HAL_I3C_FLAG_RXFNEF")
+    XCTAssertEqual(I3CConstants.HAL_I3C_FLAG_RXLASTF, CI3C_Constant(76), "HAL_I3C_FLAG_RXLASTF")
+    XCTAssertEqual(I3CConstants.HAL_I3C_FLAG_RXTGTENDF, CI3C_Constant(77), "HAL_I3C_FLAG_RXTGTENDF")
+    XCTAssertEqual(I3CConstants.HAL_I3C_FLAG_SFNEF, CI3C_Constant(78), "HAL_I3C_FLAG_SFNEF")
+    XCTAssertEqual(I3CConstants.HAL_I3C_FLAG_STAF, CI3C_Constant(79), "HAL_I3C_FLAG_STAF")
+    XCTAssertEqual(I3CConstants.HAL_I3C_FLAG_TXFEF, CI3C_Constant(80), "HAL_I3C_FLAG_TXFEF")
+    XCTAssertEqual(I3CConstants.HAL_I3C_FLAG_TXFNFF, CI3C_Constant(81), "HAL_I3C_FLAG_TXFNFF")
+    XCTAssertEqual(I3CConstants.HAL_I3C_FLAG_TXLASTF, CI3C_Constant(82), "HAL_I3C_FLAG_TXLASTF")
+    XCTAssertEqual(I3CConstants.HAL_I3C_FLAG_WKPF, CI3C_Constant(83), "HAL_I3C_FLAG_WKPF")
+    XCTAssertEqual(
+      I3CConstants.HAL_I3C_GETMXDS_FORMAT_1, CI3C_Constant(84), "HAL_I3C_GETMXDS_FORMAT_1")
+    XCTAssertEqual(
+      I3CConstants.HAL_I3C_GETMXDS_FORMAT_2_LSB, CI3C_Constant(85), "HAL_I3C_GETMXDS_FORMAT_2_LSB")
+    XCTAssertEqual(
+      I3CConstants.HAL_I3C_GETMXDS_FORMAT_2_MID, CI3C_Constant(86), "HAL_I3C_GETMXDS_FORMAT_2_MID")
+    XCTAssertEqual(
+      I3CConstants.HAL_I3C_GETMXDS_FORMAT_2_MSB, CI3C_Constant(87), "HAL_I3C_GETMXDS_FORMAT_2_MSB")
+    XCTAssertEqual(
+      I3CConstants.HAL_I3C_HANDOFF_ACTIVITY_STATE_0, CI3C_Constant(88),
+      "HAL_I3C_HANDOFF_ACTIVITY_STATE_0")
+    XCTAssertEqual(
+      I3CConstants.HAL_I3C_HANDOFF_ACTIVITY_STATE_1, CI3C_Constant(89),
+      "HAL_I3C_HANDOFF_ACTIVITY_STATE_1")
+    XCTAssertEqual(
+      I3CConstants.HAL_I3C_HANDOFF_ACTIVITY_STATE_2, CI3C_Constant(90),
+      "HAL_I3C_HANDOFF_ACTIVITY_STATE_2")
+    XCTAssertEqual(
+      I3CConstants.HAL_I3C_HANDOFF_ACTIVITY_STATE_3, CI3C_Constant(91),
+      "HAL_I3C_HANDOFF_ACTIVITY_STATE_3")
+    XCTAssertEqual(
+      I3CConstants.HAL_I3C_HDR_EXIT_PATTERN, CI3C_Constant(92), "HAL_I3C_HDR_EXIT_PATTERN")
+    XCTAssertEqual(I3CConstants.HAL_I3C_IT_ASUPDIE, CI3C_Constant(93), "HAL_I3C_IT_ASUPDIE")
+    XCTAssertEqual(I3CConstants.HAL_I3C_IT_CFNFIE, CI3C_Constant(94), "HAL_I3C_IT_CFNFIE")
+    XCTAssertEqual(I3CConstants.HAL_I3C_IT_CRIE, CI3C_Constant(95), "HAL_I3C_IT_CRIE")
+    XCTAssertEqual(I3CConstants.HAL_I3C_IT_CRUPDIE, CI3C_Constant(96), "HAL_I3C_IT_CRUPDIE")
+    XCTAssertEqual(I3CConstants.HAL_I3C_IT_DAUPDIE, CI3C_Constant(97), "HAL_I3C_IT_DAUPDIE")
+    XCTAssertEqual(I3CConstants.HAL_I3C_IT_DEFIE, CI3C_Constant(98), "HAL_I3C_IT_DEFIE")
+    XCTAssertEqual(I3CConstants.HAL_I3C_IT_ERRIE, CI3C_Constant(99), "HAL_I3C_IT_ERRIE")
+    XCTAssertEqual(I3CConstants.HAL_I3C_IT_FCIE, CI3C_Constant(100), "HAL_I3C_IT_FCIE")
+    XCTAssertEqual(I3CConstants.HAL_I3C_IT_GETIE, CI3C_Constant(101), "HAL_I3C_IT_GETIE")
+    XCTAssertEqual(I3CConstants.HAL_I3C_IT_GRPIE, CI3C_Constant(102), "HAL_I3C_IT_GRPIE")
+    XCTAssertEqual(I3CConstants.HAL_I3C_IT_HJIE, CI3C_Constant(103), "HAL_I3C_IT_HJIE")
+    XCTAssertEqual(I3CConstants.HAL_I3C_IT_IBIENDIE, CI3C_Constant(104), "HAL_I3C_IT_IBIENDIE")
+    XCTAssertEqual(I3CConstants.HAL_I3C_IT_IBIIE, CI3C_Constant(105), "HAL_I3C_IT_IBIIE")
+    XCTAssertEqual(I3CConstants.HAL_I3C_IT_INTUPDIE, CI3C_Constant(106), "HAL_I3C_IT_INTUPDIE")
+    XCTAssertEqual(I3CConstants.HAL_I3C_IT_MRLUPDIE, CI3C_Constant(107), "HAL_I3C_IT_MRLUPDIE")
+    XCTAssertEqual(I3CConstants.HAL_I3C_IT_MWLUPDIE, CI3C_Constant(108), "HAL_I3C_IT_MWLUPDIE")
+    XCTAssertEqual(I3CConstants.HAL_I3C_IT_RSTIE, CI3C_Constant(109), "HAL_I3C_IT_RSTIE")
+    XCTAssertEqual(I3CConstants.HAL_I3C_IT_RXFNEIE, CI3C_Constant(110), "HAL_I3C_IT_RXFNEIE")
+    XCTAssertEqual(I3CConstants.HAL_I3C_IT_RXTGTENDIE, CI3C_Constant(111), "HAL_I3C_IT_RXTGTENDIE")
+    XCTAssertEqual(I3CConstants.HAL_I3C_IT_SFNEIE, CI3C_Constant(112), "HAL_I3C_IT_SFNEIE")
+    XCTAssertEqual(I3CConstants.HAL_I3C_IT_STAIE, CI3C_Constant(113), "HAL_I3C_IT_STAIE")
+    XCTAssertEqual(I3CConstants.HAL_I3C_IT_TXFNFIE, CI3C_Constant(114), "HAL_I3C_IT_TXFNFIE")
+    XCTAssertEqual(I3CConstants.HAL_I3C_IT_WKPIE, CI3C_Constant(115), "HAL_I3C_IT_WKPIE")
+    XCTAssertEqual(
+      I3CConstants.HAL_I3C_MODE_CONTROLLER, CI3C_Constant(116), "HAL_I3C_MODE_CONTROLLER")
+    XCTAssertEqual(I3CConstants.HAL_I3C_MODE_NONE, CI3C_Constant(117), "HAL_I3C_MODE_NONE")
+    XCTAssertEqual(I3CConstants.HAL_I3C_MODE_TARGET, CI3C_Constant(118), "HAL_I3C_MODE_TARGET")
+    XCTAssertEqual(
+      I3CConstants.HAL_I3C_MSPDEINIT_CB_ID, CI3C_Constant(119), "HAL_I3C_MSPDEINIT_CB_ID")
+    XCTAssertEqual(I3CConstants.HAL_I3C_MSPINIT_CB_ID, CI3C_Constant(120), "HAL_I3C_MSPINIT_CB_ID")
+    XCTAssertEqual(I3CConstants.HAL_I3C_NOTIFY_CB_ID, CI3C_Constant(121), "HAL_I3C_NOTIFY_CB_ID")
+    XCTAssertEqual(
+      I3CConstants.HAL_I3C_OWN_ACTIVITY_STATE_0, CI3C_Constant(122), "HAL_I3C_OWN_ACTIVITY_STATE_0")
+    XCTAssertEqual(
+      I3CConstants.HAL_I3C_OWN_ACTIVITY_STATE_1, CI3C_Constant(123), "HAL_I3C_OWN_ACTIVITY_STATE_1")
+    XCTAssertEqual(
+      I3CConstants.HAL_I3C_OWN_ACTIVITY_STATE_2, CI3C_Constant(124), "HAL_I3C_OWN_ACTIVITY_STATE_2")
+    XCTAssertEqual(
+      I3CConstants.HAL_I3C_OWN_ACTIVITY_STATE_3, CI3C_Constant(125), "HAL_I3C_OWN_ACTIVITY_STATE_3")
+    XCTAssertEqual(
+      I3CConstants.HAL_I3C_PAYLOAD_1_BYTE, CI3C_Constant(126), "HAL_I3C_PAYLOAD_1_BYTE")
+    XCTAssertEqual(
+      I3CConstants.HAL_I3C_PAYLOAD_2_BYTES, CI3C_Constant(127), "HAL_I3C_PAYLOAD_2_BYTES")
+    XCTAssertEqual(
+      I3CConstants.HAL_I3C_PAYLOAD_3_BYTES, CI3C_Constant(128), "HAL_I3C_PAYLOAD_3_BYTES")
+    XCTAssertEqual(
+      I3CConstants.HAL_I3C_PAYLOAD_4_BYTES, CI3C_Constant(129), "HAL_I3C_PAYLOAD_4_BYTES")
+    XCTAssertEqual(I3CConstants.HAL_I3C_PAYLOAD_EMPTY, CI3C_Constant(130), "HAL_I3C_PAYLOAD_EMPTY")
+    XCTAssertEqual(
+      I3CConstants.HAL_I3C_RESET_PATTERN_DISABLE, CI3C_Constant(131),
+      "HAL_I3C_RESET_PATTERN_DISABLE")
+    XCTAssertEqual(
+      I3CConstants.HAL_I3C_RESET_PATTERN_ENABLE, CI3C_Constant(132), "HAL_I3C_RESET_PATTERN_ENABLE")
+    XCTAssertEqual(
+      I3CConstants.HAL_I3C_RXFIFO_THRESHOLD_1_4, CI3C_Constant(133), "HAL_I3C_RXFIFO_THRESHOLD_1_4")
+    XCTAssertEqual(
+      I3CConstants.HAL_I3C_RXFIFO_THRESHOLD_4_4, CI3C_Constant(134), "HAL_I3C_RXFIFO_THRESHOLD_4_4")
+    XCTAssertEqual(
+      I3CConstants.HAL_I3C_SDA_HOLD_TIME_0_5, CI3C_Constant(135), "HAL_I3C_SDA_HOLD_TIME_0_5")
+    XCTAssertEqual(
+      I3CConstants.HAL_I3C_SDA_HOLD_TIME_1_5, CI3C_Constant(136), "HAL_I3C_SDA_HOLD_TIME_1_5")
+    XCTAssertEqual(I3CConstants.HAL_I3C_STATE_ABORT, CI3C_Constant(137), "HAL_I3C_STATE_ABORT")
+    XCTAssertEqual(I3CConstants.HAL_I3C_STATE_BUSY, CI3C_Constant(138), "HAL_I3C_STATE_BUSY")
+    XCTAssertEqual(
+      I3CConstants.HAL_I3C_STATE_BUSY_DAA, CI3C_Constant(139), "HAL_I3C_STATE_BUSY_DAA")
+    XCTAssertEqual(I3CConstants.HAL_I3C_STATE_BUSY_RX, CI3C_Constant(140), "HAL_I3C_STATE_BUSY_RX")
+    XCTAssertEqual(I3CConstants.HAL_I3C_STATE_BUSY_TX, CI3C_Constant(141), "HAL_I3C_STATE_BUSY_TX")
+    XCTAssertEqual(
+      I3CConstants.HAL_I3C_STATE_BUSY_TX_RX, CI3C_Constant(142), "HAL_I3C_STATE_BUSY_TX_RX")
+    XCTAssertEqual(I3CConstants.HAL_I3C_STATE_ERROR, CI3C_Constant(143), "HAL_I3C_STATE_ERROR")
+    XCTAssertEqual(I3CConstants.HAL_I3C_STATE_LISTEN, CI3C_Constant(144), "HAL_I3C_STATE_LISTEN")
+    XCTAssertEqual(I3CConstants.HAL_I3C_STATE_READY, CI3C_Constant(145), "HAL_I3C_STATE_READY")
+    XCTAssertEqual(I3CConstants.HAL_I3C_STATE_RESET, CI3C_Constant(146), "HAL_I3C_STATE_RESET")
+    XCTAssertEqual(
+      I3CConstants.HAL_I3C_STATUSFIFO_DISABLE, CI3C_Constant(147), "HAL_I3C_STATUSFIFO_DISABLE")
+    XCTAssertEqual(
+      I3CConstants.HAL_I3C_STATUSFIFO_ENABLE, CI3C_Constant(148), "HAL_I3C_STATUSFIFO_ENABLE")
+    XCTAssertEqual(
+      I3CConstants.HAL_I3C_TARGET_RESET_PATTERN, CI3C_Constant(149), "HAL_I3C_TARGET_RESET_PATTERN")
+    XCTAssertEqual(
+      I3CConstants.HAL_I3C_TGT_HOTJOIN_CB_ID, CI3C_Constant(150), "HAL_I3C_TGT_HOTJOIN_CB_ID")
+    XCTAssertEqual(
+      I3CConstants.HAL_I3C_TGT_REQ_DYNAMIC_ADDR_CB_ID, CI3C_Constant(151),
+      "HAL_I3C_TGT_REQ_DYNAMIC_ADDR_CB_ID")
+    XCTAssertEqual(
+      I3CConstants.HAL_I3C_TGT_RX_COMPLETE_CB_ID, CI3C_Constant(152),
+      "HAL_I3C_TGT_RX_COMPLETE_CB_ID")
+    XCTAssertEqual(
+      I3CConstants.HAL_I3C_TGT_TX_COMPLETE_CB_ID, CI3C_Constant(153),
+      "HAL_I3C_TGT_TX_COMPLETE_CB_ID")
+    XCTAssertEqual(
+      I3CConstants.HAL_I3C_TURNAROUND_TIME_TSCO_GREATER_12NS, CI3C_Constant(154),
+      "HAL_I3C_TURNAROUND_TIME_TSCO_GREATER_12NS")
+    XCTAssertEqual(
+      I3CConstants.HAL_I3C_TURNAROUND_TIME_TSCO_LESS_12NS, CI3C_Constant(155),
+      "HAL_I3C_TURNAROUND_TIME_TSCO_LESS_12NS")
+    XCTAssertEqual(
+      I3CConstants.HAL_I3C_TXFIFO_THRESHOLD_1_4, CI3C_Constant(156), "HAL_I3C_TXFIFO_THRESHOLD_1_4")
+    XCTAssertEqual(
+      I3CConstants.HAL_I3C_TXFIFO_THRESHOLD_4_4, CI3C_Constant(157), "HAL_I3C_TXFIFO_THRESHOLD_4_4")
+    XCTAssertEqual(
+      I3CConstants.I2C_PRIVATE_WITHOUT_ARB_RESTART, CI3C_Constant(158),
+      "I2C_PRIVATE_WITHOUT_ARB_RESTART")
+    XCTAssertEqual(
+      I3CConstants.I2C_PRIVATE_WITHOUT_ARB_STOP, CI3C_Constant(159), "I2C_PRIVATE_WITHOUT_ARB_STOP")
+    XCTAssertEqual(
+      I3CConstants.I2C_PRIVATE_WITH_ARB_RESTART, CI3C_Constant(160), "I2C_PRIVATE_WITH_ARB_RESTART")
+    XCTAssertEqual(
+      I3CConstants.I2C_PRIVATE_WITH_ARB_STOP, CI3C_Constant(161), "I2C_PRIVATE_WITH_ARB_STOP")
+    XCTAssertEqual(
+      I3CConstants.I3C_BROADCAST_WITHOUT_DEFBYTE_RESTART, CI3C_Constant(162),
+      "I3C_BROADCAST_WITHOUT_DEFBYTE_RESTART")
+    XCTAssertEqual(
+      I3CConstants.I3C_BROADCAST_WITHOUT_DEFBYTE_STOP, CI3C_Constant(163),
+      "I3C_BROADCAST_WITHOUT_DEFBYTE_STOP")
+    XCTAssertEqual(
+      I3CConstants.I3C_BROADCAST_WITH_DEFBYTE_RESTART, CI3C_Constant(164),
+      "I3C_BROADCAST_WITH_DEFBYTE_RESTART")
+    XCTAssertEqual(
+      I3CConstants.I3C_BROADCAST_WITH_DEFBYTE_STOP, CI3C_Constant(165),
+      "I3C_BROADCAST_WITH_DEFBYTE_STOP")
+    XCTAssertEqual(
+      I3CConstants.I3C_DIRECT_WITHOUT_DEFBYTE_RESTART, CI3C_Constant(166),
+      "I3C_DIRECT_WITHOUT_DEFBYTE_RESTART")
+    XCTAssertEqual(
+      I3CConstants.I3C_DIRECT_WITHOUT_DEFBYTE_STOP, CI3C_Constant(167),
+      "I3C_DIRECT_WITHOUT_DEFBYTE_STOP")
+    XCTAssertEqual(
+      I3CConstants.I3C_DIRECT_WITH_DEFBYTE_RESTART, CI3C_Constant(168),
+      "I3C_DIRECT_WITH_DEFBYTE_RESTART")
+    XCTAssertEqual(
+      I3CConstants.I3C_DIRECT_WITH_DEFBYTE_STOP, CI3C_Constant(169), "I3C_DIRECT_WITH_DEFBYTE_STOP")
+    XCTAssertEqual(I3CConstants.I3C_ONLY_ENTDAA, CI3C_Constant(170), "I3C_ONLY_ENTDAA")
+    XCTAssertEqual(
+      I3CConstants.I3C_PRIVATE_WITHOUT_ARB_RESTART, CI3C_Constant(171),
+      "I3C_PRIVATE_WITHOUT_ARB_RESTART")
+    XCTAssertEqual(
+      I3CConstants.I3C_PRIVATE_WITHOUT_ARB_STOP, CI3C_Constant(172), "I3C_PRIVATE_WITHOUT_ARB_STOP")
+    XCTAssertEqual(
+      I3CConstants.I3C_PRIVATE_WITH_ARB_RESTART, CI3C_Constant(173), "I3C_PRIVATE_WITH_ARB_RESTART")
+    XCTAssertEqual(
+      I3CConstants.I3C_PRIVATE_WITH_ARB_STOP, CI3C_Constant(174), "I3C_PRIVATE_WITH_ARB_STOP")
+    XCTAssertEqual(
+      I3CConstants.I3C_RSTDAA_THEN_ENTDAA, CI3C_Constant(175), "I3C_RSTDAA_THEN_ENTDAA")
+  }
+}
