@@ -12,7 +12,8 @@ Tests/CDCMIPPReference, Tests/CLPTIMReference, Tests/CSerialControlReference,
 Tests/CPSSIReference, Tests/CMCEReference, Tests/CSPDIFRXReference,
 Tests/CMDFReference, Tests/CJPEGReference, Tests/CRTCReference, Tests/CPKAReference,
 Tests/CADCReference, Tests/CFDCANReference, Tests/CUSARTReference,
-Tests/CIRDAReference, Tests/CSMARTCARDReference, and Tests/CCRYPReference
+Tests/CIRDAReference, Tests/CSMARTCARDReference, Tests/CCRYPReference,
+and Tests/CETHReference
 derive from STMicroelectronics/stm32h7rsxx-hal-driver, revision
 606ed7132ef1bc32c77fd9a040103bc98f23c748.
 

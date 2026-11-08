@@ -1,0 +1,110 @@
+uint32_t F_JOIN(F_VARIANT,_Run)(CETHState *s,uint32_t op,uint32_t a,uint32_t b,uint32_t c){switch(op){
+#if F_PTP
+case 20:return HAL_ETH_PTP_SetConfig(&s->h,c?NULL:&s->configuration2);
+case 21:return HAL_ETH_PTP_GetConfig(&s->h,c?NULL:&s->configuration2);
+case 22:return HAL_ETH_PTP_SetTime(&s->h,&s->configuration10);
+case 23:return HAL_ETH_PTP_GetTime(&s->h,&s->configuration10);
+case 24:return HAL_ETH_PTP_AddTimeOffset(&s->h,(ETH_PtpUpdateTypeDef)a,&s->configuration10);
+case 25:return HAL_ETH_PTP_AddendUpdate(&s->h,(int32_t)a);
+case 26:return HAL_ETH_PTP_InsertTxTimestamp(&s->h);
+case 27:return HAL_ETH_PTP_GetTxTimestamp(&s->h,&s->configuration9);
+case 28:return HAL_ETH_PTP_GetRxTimestamp(&s->h,&s->configuration9);
+#endif
+case 32:return HAL_ETH_ReadPHYRegister(&s->h,a,b,s->buffers[0]);
+case 33:return HAL_ETH_WritePHYRegister(&s->h,a,b,c);
+case 34:return HAL_ETH_GetMACConfig(&s->h,c?NULL:&s->configuration0);
+case 35:return HAL_ETH_GetDMAConfig(&s->h,c?NULL:&s->configuration1);
+case 36:return HAL_ETH_SetMACConfig(&s->h,c?NULL:&s->configuration0);
+case 37:return HAL_ETH_SetDMAConfig(&s->h,c?NULL:&s->configuration1);
+case 39:return HAL_ETH_SetMACFilterConfig(&s->h,c?NULL:&s->configuration3);
+case 40:return HAL_ETH_GetMACFilterConfig(&s->h,c?NULL:&s->configuration3);
+case 38:HAL_ETH_SetMDIOClockRange(&s->h);return 0;
+case 41:return HAL_ETH_SetSourceMACAddrMatch(&s->h,a,c?NULL:s->mac);
+case 42:return HAL_ETH_SetHashTable(&s->h,c?NULL:s->buffers[0]);
+case 43:HAL_ETH_SetRxVLANIdentifier(&s->h,a,b);return 0;
+case 44:HAL_ETH_EnterPowerDownMode(&s->h,&s->configuration4);return 0;
+case 45:HAL_ETH_ExitPowerDownMode(&s->h);return 0;
+case 46:return HAL_ETH_SetWakeUpFilter(&s->h,c?NULL:s->buffers[0],a);
+case 53:ETH_SetMACConfig(&s->h,&s->configuration0);return 0;
+case 54:ETH_SetDMAConfig(&s->h,&s->configuration1);return 0;
+case 55:ETH_MACDMAConfig(&s->h);return 0;
+case 1:return HAL_ETH_DeInit(&s->h);
+#if F_CALLBACKS
+case 2:return HAL_ETH_RegisterCallback(&s->h,(HAL_ETH_CallbackIDTypeDef)a,(pETH_CallbackTypeDef)CETH_Callback(4,b));
+case 3:return HAL_ETH_UnRegisterCallback(&s->h,(HAL_ETH_CallbackIDTypeDef)a);
+case 59:ETH_InitCallbacksToDefault(&s->h);return 0;
+#endif
+case 12:return HAL_ETH_RegisterRxAllocateCallback(&s->h,(pETH_rxAllocateCallbackTypeDef)CETH_Callback(9,b));
+case 13:return HAL_ETH_UnRegisterRxAllocateCallback(&s->h);
+case 14:return HAL_ETH_RegisterRxLinkCallback(&s->h,(pETH_rxLinkCallbackTypeDef)CETH_Callback(10,b));
+case 15:return HAL_ETH_UnRegisterRxLinkCallback(&s->h);
+case 17:return HAL_ETH_RegisterTxFreeCallback(&s->h,(pETH_txFreeCallbackTypeDef)CETH_Callback(11,b));
+case 18:return HAL_ETH_UnRegisterTxFreeCallback(&s->h);
+#if F_PTP
+case 29:return HAL_ETH_RegisterTxPtpCallback(&s->h,(pETH_txPtpCallbackTypeDef)CETH_Callback(12,b));
+case 30:return HAL_ETH_UnRegisterTxPtpCallback(&s->h);
+#endif
+case 31:HAL_ETH_IRQHandler(&s->h);return 0;
+case 0:return HAL_ETH_Init(&s->h);
+case 4:return HAL_ETH_Start(&s->h);
+case 5:return HAL_ETH_Start_IT(&s->h);
+case 6:return HAL_ETH_Stop(&s->h);
+case 7:return HAL_ETH_Stop_IT(&s->h);
+case 8:return HAL_ETH_Transmit(&s->h,c?NULL:&s->packet,a);
+case 9:return HAL_ETH_Transmit_IT(&s->h,c?NULL:&s->packet);
+case 10:return HAL_ETH_ReadData(&s->h,c?NULL:(void **)&s->packet.pData);
+case 11:ETH_UpdateDescriptor(&s->h);return 0;
+case 16:return HAL_ETH_GetRxDataErrorCode(&s->h,s->buffers[0]);
+case 19:return HAL_ETH_ReleaseTxPacket(&s->h);
+case 56:ETH_DMATxDescListInit(&s->h);return 0;
+case 57:ETH_DMARxDescListInit(&s->h);return 0;
+case 58:return ETH_Prepare_Tx_Descriptors(&s->h,&s->packet,a);
+case 47:return HAL_ETH_GetState(&s->h);
+case 48:return HAL_ETH_GetError(&s->h);
+case 49:return HAL_ETH_GetDMAError(&s->h);
+case 50:return HAL_ETH_GetMACError(&s->h);
+case 51:return HAL_ETH_GetMACWakeUpSource(&s->h);
+case 52:return HAL_ETH_GetTxBuffersNumber(&s->h);
+case 79:return HAL_ETHEx_GetMACLPIEvent(&s->h);
+case 63:return HAL_ETHEx_SetL4FilterConfig(&s->h,a,c?NULL:&s->configuration8);
+case 64:return HAL_ETHEx_GetL4FilterConfig(&s->h,a,c?NULL:&s->configuration8);
+case 65:return HAL_ETHEx_SetL3FilterConfig(&s->h,a,c?NULL:&s->configuration7);
+case 66:return HAL_ETHEx_GetL3FilterConfig(&s->h,a,c?NULL:&s->configuration7);
+case 69:return HAL_ETHEx_GetRxVLANConfig(&s->h,c?NULL:&s->configuration5);
+case 70:return HAL_ETHEx_SetRxVLANConfig(&s->h,c?NULL:&s->configuration5);
+case 72:return HAL_ETHEx_GetTxVLANConfig(&s->h,a,c?NULL:&s->configuration6);
+case 73:return HAL_ETHEx_SetTxVLANConfig(&s->h,a,c?NULL:&s->configuration6);
+case 60:HAL_ETHEx_EnableARPOffload(&s->h);return 0;
+case 61:HAL_ETHEx_DisableARPOffload(&s->h);return 0;
+case 62:HAL_ETHEx_SetARPAddressMatch(&s->h,a);return 0;
+case 67:HAL_ETHEx_EnableL3L4Filtering(&s->h);return 0;
+case 68:HAL_ETHEx_DisableL3L4Filtering(&s->h);return 0;
+case 71:HAL_ETHEx_SetVLANHashTable(&s->h,a);return 0;
+case 74:HAL_ETHEx_SetTxVLANIdentifier(&s->h,a,b);return 0;
+case 75:HAL_ETHEx_EnableVLANProcessing(&s->h);return 0;
+case 76:HAL_ETHEx_DisableVLANProcessing(&s->h);return 0;
+case 77:HAL_ETHEx_EnterLPIMode(&s->h,(FunctionalState)a,(FunctionalState)b);return 0;
+case 78:HAL_ETHEx_ExitLPIMode(&s->h);return 0;
+case 80:__HAL_ETH_DMA_ENABLE_IT(&s->h,a);return 0;
+case 81:__HAL_ETH_DMA_DISABLE_IT(&s->h,a);return 0;
+case 82:return __HAL_ETH_DMA_GET_IT_SOURCE(&s->h,a);
+case 83:return __HAL_ETH_DMA_GET_IT(&s->h,a);
+case 84:__HAL_ETH_DMA_CLEAR_IT(&s->h,a);return 0;
+case 85:return __HAL_ETH_DMA_GET_FLAG(&s->h,a);
+case 86:__HAL_ETH_DMA_CLEAR_FLAG(&s->h,a);return 0;
+case 87:__HAL_ETH_MAC_ENABLE_IT(&s->h,a);return 0;
+case 88:__HAL_ETH_MAC_DISABLE_IT(&s->h,a);return 0;
+case 89:return __HAL_ETH_MAC_GET_IT(&s->h,a);
+case 91:return __HAL_ETH_GET_PTP_CONTROL(&s->h,a);
+case 92:__HAL_ETH_SET_PTP_CONTROL(&s->h,a);return 0;
+case 90:__HAL_ETH_RESET_HANDLE_STATE(&s->h);return 0;
+case 93:__HAL_ETH_WAKEUP_EXTI_ENABLE_IT(a);return 0;
+case 94:return __HAL_ETH_WAKEUP_EXTI_GET_FLAG(a);
+case 95:__HAL_ETH_WAKEUP_EXTI_CLEAR_FLAG(a);return 0;
+case 96:__HAL_ETH_WAKEUP_EXTI_ENABLE_RISING_EDGE(a);return 0;
+case 97:__HAL_ETH_WAKEUP_EXTI_ENABLE_FALLING_EDGE(a);return 0;
+case 98:__HAL_ETH_WAKEUP_EXTI_ENABLE_RISING_FALLING_EDGE(a);return 0;
+case 99:__HAL_ETH_WAKEUP_EXTI_GENERATE_SWIT(a);return 0;
+case 100:{uint32_t i=a;INCR_TX_DESC_INDEX(i,b);return i;}
+case 101:{uint32_t i=a;INCR_RX_DESC_INDEX(i,b);return i;}
+default:assert(0);return 0xFFFFFFFFU;}}
