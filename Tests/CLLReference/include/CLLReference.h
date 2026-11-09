@@ -23,3 +23,5 @@ uint32_t CLL_Constant(uint32_t index);
 #include "CLLSerialReference.h"
 
 #include "CLLSPIReference.h"
+
+#include "CLLI2CReference.h"
