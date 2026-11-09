@@ -17,3 +17,16 @@ func _llI3CTargetRegister(_ target: UInt32) -> I3CRegister {
 }
 @available(*, unavailable, message: "The pinned ST macro refers to undefined I3C_SR_OK.")
 public var LL_I3C_MESSAGE_SUCCESS: UInt32 { preconditionFailure("Missing upstream definition") }
+
+public func LL_I3C_GET_BCR(_ payload: UInt64) -> UInt32 {
+    UInt32(truncatingIfNeeded: payload >> LL_I3C_BCR_IN_PAYLOAD_SHIFT) & 0xFF
+}
+public func LL_I3C_GET_IBI_CAPABLE(_ bcr: UInt32) -> UInt32 {
+    ((bcr & 0x2) >> 1) == 1 ? LL_I3C_IBI_CAPABILITY : LL_I3C_IBI_NO_CAPABILITY
+}
+public func LL_I3C_GET_IBI_PAYLOAD(_ bcr: UInt32) -> UInt32 {
+    ((bcr & 0x4) >> 2) == 1 ? LL_I3C_IBI_DATA_ENABLE : LL_I3C_IBI_DATA_DISABLE
+}
+public func LL_I3C_GET_CR_CAPABLE(_ bcr: UInt32) -> UInt32 {
+    ((bcr & 0x40) >> 6) == 1 ? LL_I3C_CR_CAPABILITY : LL_I3C_CR_NO_CAPABILITY
+}

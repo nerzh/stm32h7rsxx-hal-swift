@@ -23,6 +23,7 @@ void CUSB_SetEndpointBuffer(CUSBState *,uint8_t *);
 uint8_t *CUSB_GetChannelBuffer(CUSBState *);
 void CUSB_SetChannelBuffer(CUSBState *,uint8_t *);
 uint32_t CUSB_Compare(CUSBState *,CUSBState *);
+void CUSB_ClearEndpointInterrupt(uint32_t *registers,uint32_t endpoint,uint32_t input,uint32_t interrupts);
 void CUSB_PCDReset(CUSBState *,uint32_t);
 void *CUSB_PCDContext(CUSBState *);
 uint8_t *CUSB_PCDSetup(CUSBState *);

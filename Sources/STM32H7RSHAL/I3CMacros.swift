@@ -8,7 +8,7 @@ extension I3C {
   public func enableInterrupts(_ mask: UInt32) { modify(.ier, set: mask) }
   public func disableInterrupts(_ mask: UInt32) { modify(.ier, clear: mask) }
   public func getBusCharacteristics(_ payload: UInt64) -> UInt32 {
-    UInt32(truncatingIfNeeded: payload >> 48) & 0xFF
+    LL_I3C_GET_BCR(payload)
   }
   public func isIBICapable(_ busCharacteristics: UInt32) -> UInt32 {
     ((busCharacteristics & 0x2) >> 1) == 1 ? 1 : 0

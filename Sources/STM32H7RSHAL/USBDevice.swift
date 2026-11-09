@@ -173,4 +173,10 @@ extension USB {
     modify(.dctl, clear: 0x1)
     return .ok
   }
+  public func clearInEndpointInterrupts(_ endpoint: UInt32, _ interrupts: UInt32) {
+    registers.write(.diepint(endpoint), value: interrupts)
+  }
+  public func clearOutEndpointInterrupts(_ endpoint: UInt32, _ interrupts: UInt32) {
+    registers.write(.doepint(endpoint), value: interrupts)
+  }
 }

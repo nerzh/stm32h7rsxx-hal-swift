@@ -10,3 +10,14 @@ public func LL_I2C_WriteReg<IO: I2CRegisterIO>(_ registers: IO, _ register: I2CR
 public func LL_I2C_ReadReg<IO: I2CRegisterIO>(_ registers: IO, _ register: I2CRegister) -> UInt32 {
     registers.read(register)
 }
+
+public func __LL_I2C_CONVERT_TIMINGS(
+    _ prescaler: UInt32, _ setupTime: UInt32, _ holdTime: UInt32,
+    _ sclHighPeriod: UInt32, _ sclLowPeriod: UInt32
+) -> UInt32 {
+    ((prescaler << 28) & 0xF000_0000)
+        | ((setupTime << 20) & 0x00F0_0000)
+        | ((holdTime << 16) & 0x000F_0000)
+        | ((sclHighPeriod << 8) & 0x0000_FF00)
+        | (sclLowPeriod & 0x0000_00FF)
+}
