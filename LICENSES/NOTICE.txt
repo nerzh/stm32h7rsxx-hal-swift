@@ -18,7 +18,8 @@ Tests/CAudioReference, Tests/CI3CReference, Tests/CSDMMCReference,
 Tests/CSDReference, Tests/CMMCReference, Tests/CSDIOReference,
 Tests/CFMCReference, Tests/CNANDReference, Tests/CNORReference,
 Tests/CSRAMReference, Tests/CSDRAMReference, Tests/CSMBUSReference,
-Tests/CSPIReference, Tests/CTIMReference, and Tests/CXSPIReference
+Tests/CSPIReference, Tests/CTIMReference, Tests/CXSPIReference, and
+Tests/CLLReference
 derive from STMicroelectronics/stm32h7rsxx-hal-driver, revision
 606ed7132ef1bc32c77fd9a040103bc98f23c748.
 
