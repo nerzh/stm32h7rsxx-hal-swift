@@ -29,3 +29,5 @@ uint32_t CLL_Constant(uint32_t index);
 #include "CLLRTCReference.h"
 
 #include "CLLComputationReference.h"
+
+#include "CLLConnectionReference.h"
