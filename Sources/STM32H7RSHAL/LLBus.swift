@@ -481,4 +481,3 @@ public func LL_CKGA_IsEnabledClock<IO: LLBusRegisterIO>(_ registers: inout IO, _
 public func LL_CKGA_Disable<IO: LLBusRegisterIO>(_ registers: inout IO, _ Periphs: UInt32) {
     registers.write(.ckgdisr, value: registers.read(.ckgdisr) | (Periphs))
 }
-

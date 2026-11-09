@@ -10,3 +10,4 @@ const uint32_t *CLL_GetCells(CLLState *s);
 const CLLAccess *CLL_GetTrace(CLLState *s);
 uint32_t CLL_GetTraceCount(CLLState *s);
 uint32_t CLL_Constant(uint32_t index);
+#include "CLLSystemReference.h"
