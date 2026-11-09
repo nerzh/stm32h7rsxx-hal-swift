@@ -679,11 +679,11 @@ public func LL_VREFBUF_SetTrimming<IO: VREFBUFRegisterIO>(_ registers: inout IO,
     registers.write(VREFBUFRegister.ccr, value: Value)
 }
 
-public func LL_FLASH_SetLatency<IO: FlashRegisterIO>(_ registers: inout IO, _ Latency: UInt32) {
+public func LL_FLASH_SetLatency<IO: FlashTimingRegisterIO>(_ registers: inout IO, _ Latency: UInt32) {
     registers.write(FlashTimingRegister.acr, value: (registers.read(FlashTimingRegister.acr) & ~(0xF)) | (Latency))
 }
 
-public func LL_FLASH_GetLatency<IO: FlashRegisterIO>(_ registers: inout IO) -> UInt32 {
+public func LL_FLASH_GetLatency<IO: FlashTimingRegisterIO>(_ registers: inout IO) -> UInt32 {
     return ((registers.read(FlashTimingRegister.acr) & (0xF)))
 }
 
