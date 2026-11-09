@@ -15,3 +15,5 @@ uint32_t CLL_Constant(uint32_t index);
 #include "CLLClockReference.h"
 
 #include "CLLDMAReference.h"
+
+#include "CLLTimerReference.h"

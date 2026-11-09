@@ -27,7 +27,8 @@ public struct STM32LPTIMRegisters: LPTIMRegisterIO {
     }
     public func address(of register: LPTIMRegister) -> UInt32 { UInt32(baseAddress) + register.rawValue }
     public func read(_ register: LPTIMRegister) -> UInt32 {
-        precondition(register != .icr, "LPTIM ICR is write-only")
+        // ST LL clears flags with SET_BIT on ICR. Preserve its volatile read
+        // before the write, even though the SVD describes ICR as write-only.
         switch register {
         case .isr:
             switch instance {
