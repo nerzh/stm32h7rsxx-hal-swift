@@ -19,3 +19,5 @@ uint32_t CLL_Constant(uint32_t index);
 #include "CLLTimerReference.h"
 
 #include "CLLADCReference.h"
+
+#include "CLLSerialReference.h"
